@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+<div>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'libro:crear_receta' %}')">Crear Receta</button>
+</div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Recetas</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if recetas %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de la receta</th>
+                    <th>Precio de la receta</th>
+                    <th>Tiempo de preparación aprox.</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receta in recetas %}
+                    <tr>
+                        <td>{{ receta.id }}</td>
+                        <td>{{ receta.nombre_receta }}</td>
+                        <td>$ {{ receta.precio_receta }}</td>
+                        <td>{{ receta.tiempo_preparacion }}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button onclick="abrir_modal_edicion('{% url 'libro:editar_receta' receta.id %}')" class="btn btn-primary">Editar
+                                </button>
+                                
+                                <a href="{% url 'libro:eliminar_receta' receta.id %}"><button class="btn btn-danger">Eliminar
+                                </button></a>
+                            </div>
+                        </td>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No existen recetas registrados</h1>
+    {% endif %}
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

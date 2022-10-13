@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Usuarios</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if object_list %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Rol</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in object_list %}
+                    <tr>
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.nombres }}</td>
+                        <td>{{ usuario.apellidos }}</td>
+                        <td>{{ usuario.rol }}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <a href=""><button class="btn btn-primary">Editar
+                                </button></a>
+                                
+                                <a href=""><button class="btn btn-danger">Eliminar
+                                </button></a>
+                            </div>
+                        </td>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No existen usuarios registrados</h1>
+    {% endif %}
+
+{% endblock listado %}

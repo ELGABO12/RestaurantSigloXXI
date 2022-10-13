@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+{% endblock titulo1 %}
+
+
+{% block listado %}
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Registro de Usuarios</strong>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="">
+                <button class="btn btn-primary" type="submit">Registrar</button>
+                <a href="{% url 'usuarios:listar_usuarios' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock listado %}

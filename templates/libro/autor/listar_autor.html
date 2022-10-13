@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+<div>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'libro:crear_autor' %}')">Crear Producto</button>
+</div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Productos</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+
+    {% if autores %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
+                    <th>Descripción</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <td>{{ autor.id }}</td>
+                        <td>{{ autor.nombre_producto }}</td>
+                        <td>{{ autor.cantidad }}</td>
+                        <td>{{ autor.precio }}</td>
+                        <td>{{ autor.proveedor }}</td>
+                        <td>{{ autor.descripcion }}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button onclick="abrir_modal_edicion('{% url 'libro:editar_autor' autor.id %}')" class="btn btn-primary">Editar
+                                </button>
+                                
+                                <a href="{% url 'libro:eliminar_autor' autor.id %}"><button class="btn btn-danger">Eliminar
+                                </button></a>
+                            </div>
+                        </td>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <h1>No existen productos registrados</h1>
+    {% endif %}
+
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}
