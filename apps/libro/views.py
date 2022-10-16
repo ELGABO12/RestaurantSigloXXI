@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View,TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
-from apps.libro.forms import AutorForm,LibroForm,MesaForm,RecetaForm
-from .models import Autor, Libro, Mesa, Receta
+from apps.libro.forms import AutorForm,LibroForm,MesaForm,RecetaForm,BodegaForm
+from .models import Autor, Libro, Mesa, Receta, Bodega
 
 # Create your views here.
 
@@ -230,3 +230,52 @@ class ActualizarReceta(UpdateView): # Actualizar Receta
 class EliminarReceta(DeleteView): # Eliminar Receta
     model = Receta
     success_url = reverse_lazy('libro:listado_recetas')
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+class ListadoBodega(View): # Listado de la Bodega
+    model = Bodega
+    form_class = BodegaForm
+    template_name = 'libro/bodega/listar_bodega.html'  
+    
+    def get_queryset(self):
+        return self.model.objects.filter()
+    
+    def get_context_data(self,**kwargs):
+        contexto = {}
+        contexto['bodega'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+    
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,self.get_context_data())
+        
+        
+
+class CrearBodega(CreateView): # Crear el Producto en la Bodega
+    model = Bodega
+    form_class = BodegaForm
+    template_name = 'libro/bodega/crear_bodega.html'
+    success_url = reverse_lazy('libro:listado_bodega')
+
+
+
+class ActualizarBodega(UpdateView): # Actualizar Bodega
+    model = Bodega
+    form_class = BodegaForm
+    template_name = 'libro/bodega/bodega.html'
+    success_url = reverse_lazy('libro:listado_bodega')
+    
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bodega'] = Bodega.objects.filter()
+        return context
+    
+
+
+class EliminarBodega(DeleteView): # Eliminar Producto de la Bodega
+    model = Bodega
+    success_url = reverse_lazy('libro:listado_bodega')

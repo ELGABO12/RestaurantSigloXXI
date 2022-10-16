@@ -68,3 +68,14 @@ class Receta(models.Model):
         
     def __str__(self):
         return self.nombre_receta
+
+
+class Bodega(models.Model):
+    id = models.AutoField(primary_key = True)
+    proveedor = models.ForeignKey('Libro' , on_delete=models.SET_NULL, null=True, blank=False)
+    productos = models.ForeignKey('Autor' , on_delete=models.SET_NULL, null=True, blank=False)
+    cantidad = models.CharField('Cantidad' , max_length = 2, blank = False, null = True)
+
+    class Meta:
+        verbose_name = 'Bodega'
+        ordering = ['proveedor']

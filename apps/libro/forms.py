@@ -1,6 +1,6 @@
 from socket import fromshare
 from django import forms
-from .models import Autor, Libro, Mesa, Receta
+from .models import Autor, Libro, Mesa, Receta, Bodega
 
 class AutorForm(forms.ModelForm):
     class Meta:
@@ -159,6 +159,38 @@ class RecetaForm(forms.ModelForm):
                 attrs = {
                     'class': 'form-control',
                     'placeholder': ' Ingrese el tiempo aprox. de preparación de la receta'
+                }
+            ),
+        }
+
+class BodegaForm(forms.ModelForm):
+    class Meta:
+        model = Bodega
+        fields = ('proveedor', 'productos', 'cantidad')
+        label = {
+            'proveedor':'Proveedor',
+            'productos':'Productos',
+            'cantidad':'Cantidad',
+        }
+        widgets = {
+            'proveedor':forms.ModelChoiceField(queryset=Libro.objects.all(),
+            widget=forms.Select(
+            attrs={
+                'class':'form-control',
+                'placeholder':'Selecciona el Proveedor'
+            })
+            ),
+            'productos':forms.ModelChoiceField(queryset=Libro.objects.all(),
+            widget=forms.Select(
+            attrs={
+                'class':'form-control' ,
+                'placeholder':'Selecciona el Producto'
+            })
+            ),
+            'cantidad': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Ingrese la Cantidad'
                 }
             ),
         }
