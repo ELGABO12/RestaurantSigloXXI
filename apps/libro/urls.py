@@ -23,7 +23,7 @@ urlpatterns = [
     path('editar_receta/<int:pk>/', login_required(ActualizarReceta.as_view()), name = 'editar_receta'),
     path('eliminar_receta/<int:pk>/', login_required(EliminarReceta.as_view()), name = 'eliminar_receta'),
 
-    path('listar_bodega/', login_required(ListadoBodega.as_view()), name = 'listado_bodega'),
+    path('listar_bodegas/', login_required(ListadoBodega.as_view()), name = 'listado_bodegas'),
     path('crear_bodega/', login_required(CrearBodega.as_view()), name = 'crear_bodega'),
     path('editar_bodega/<int:pk>/', login_required(ActualizarBodega.as_view()), name = 'editar_bodega'),
     path('eliminar_bodega/<int:pk>/', login_required(EliminarBodega.as_view()), name = 'eliminar_bodega'),

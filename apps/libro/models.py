@@ -78,4 +78,8 @@ class Bodega(models.Model):
 
     class Meta:
         verbose_name = 'Bodega'
+        verbose_name_plural = 'Bodegas'
         ordering = ['proveedor']
+
+    def __str__(self):
+        return self.proveedor
