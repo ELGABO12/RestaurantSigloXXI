@@ -28,3 +28,5 @@ urlpatterns = [
     path('editar_bodega/<int:pk>/', login_required(ActualizarBodega.as_view()), name = 'editar_bodega'),
     path('eliminar_bodega/<int:pk>/', login_required(EliminarBodega.as_view()), name = 'eliminar_bodega'),
 ]
+
+app_name = 'libro'

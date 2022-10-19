@@ -8,3 +8,5 @@ urlpatterns = [
     path('editar_usuario/<int:pk>/',login_required(ActualizarUsuario.as_view()), name='editar_usuario'),
     path('eliminar_usuario/<int:pk>/',login_required(EliminarUsuario.as_view()), name='eliminar_usuario'),
 ]
+
+app_name = 'usuarios'

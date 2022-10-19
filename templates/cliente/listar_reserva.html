@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+<div>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'cliente:crear_reserva' %}')">Crear Reserva</button>
+</div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Reservas</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if reservas %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>Código reserva</th>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Fecha reserva</th>
+                    <th>Hora reserva</th>
+                    <th>Número de mesa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva.cod_reserva }}</td>
+                        <td>{{ reserva.email_cliente }}</td>
+                        <td>{{ reserva.nombre_cliente }}</td>
+                        <td>{{ reserva.apellido_cliente }}</td>
+                        <td>{{ reserva.telefono_cliente }}</td>
+                        <td>{{ reserva.fecha_reserva }}</td>
+                        <td>{{ reserva.hora_reserva }}</td>
+                        <td>
+                        {% for mesa in reserva.numero_mesa.all %}
+                        Mesa {{ mesa.id }}
+                        {% endfor %}
+                        </td>
+                        <td>
+                            <div class="table-data-feature"> 
+                                <a href=""><button class="btn btn-danger">Eliminar
+                                </button></a>
+                            </div>
+                        </td>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No existen reservas</h1>
+    {% endif %}
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

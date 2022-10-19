@@ -22,6 +22,7 @@ from apps.usuario.views import Login, logoutUsuario
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include(('apps.usuario.urls', 'usuarios'))),
+    path('cliente/', include('apps.cliente.urls', 'cliente')),
     path('libro/', include(('apps.libro.urls', 'libro'))),
     path('', login_required(Inicio.as_view()), name = 'index'),
     path('accounts/login/', Login.as_view(), name = 'login'),

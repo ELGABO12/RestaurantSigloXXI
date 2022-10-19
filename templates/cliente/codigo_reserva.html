@@ -1,0 +1,18 @@
+{% extends 'cliente/index_cliente.html' %}
+
+{% block menu %}
+<h2 style="text-align: center;">Ingrese su correo para buscar su reserva</h2>
+
+<br>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"/>
+ <form class="col-lg-6 offset-lg-3 ">
+   <div class="row justify-content-center">
+     <input type="email" placeholder="Correo electrónico">
+     <span class="input-group-btn">
+       <button class="btn btn-success">Buscar reserva</button>
+     </span>
+   </div>
+ </form>
+
+{% endblock menu %}
