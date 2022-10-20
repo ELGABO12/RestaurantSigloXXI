@@ -43,3 +43,8 @@ class CrearReserva(CreateView): # Crear Reserva
     form_class = ReservaForm
     template_name = 'cliente/crear_reserva.html'
     success_url = reverse_lazy('cliente:listado_reservas')
+
+
+class EliminarReserva(DeleteView): #Eliminar Reserva 
+    model = Reserva
+    success_url = reverse_lazy('cliente:listado_reservas')
