@@ -163,6 +163,8 @@ class RecetaForm(forms.ModelForm):
             ),
         }
 
+
+
 class BodegaForm(forms.ModelForm):
     class Meta:
         model = Bodega
@@ -173,19 +175,17 @@ class BodegaForm(forms.ModelForm):
             'cantidad':'Cantidad',
         }
         widgets = {
-            'proveedor':forms.ModelChoiceField(queryset=Libro.objects.all(),
-            widget=forms.Select(
+            'proveedor':forms.Select(
             attrs={
                 'class':'form-control',
                 'placeholder':'Selecciona el Proveedor'
-            })
+            }
             ),
-            'productos':forms.ModelChoiceField(queryset=Libro.objects.all(),
-            widget=forms.Select(
+            'productos':forms.Select(
             attrs={
                 'class':'form-control' ,
                 'placeholder':'Selecciona el Producto'
-            })
+            }
             ),
             'cantidad': forms.TextInput(
                 attrs = {

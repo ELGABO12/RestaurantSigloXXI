@@ -82,4 +82,4 @@ class Bodega(models.Model):
         ordering = ['proveedor']
 
     def __str__(self):
-        return self.proveedor
+        return self.cantidad

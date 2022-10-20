@@ -236,6 +236,8 @@ class EliminarReceta(DeleteView): # Eliminar Receta
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
 
+
+
 class ListadoBodega(View): # Listado de la Bodega
     model = Bodega
     form_class = BodegaForm
@@ -246,7 +248,7 @@ class ListadoBodega(View): # Listado de la Bodega
     
     def get_context_data(self,**kwargs):
         contexto = {}
-        contexto['bodega'] = self.get_queryset()
+        contexto['bodegas'] = self.get_queryset()
         contexto['form'] = self.form_class
         return contexto
     
@@ -259,7 +261,7 @@ class CrearBodega(CreateView): # Crear el Producto en la Bodega
     model = Bodega
     form_class = BodegaForm
     template_name = 'libro/bodega/crear_bodega.html'
-    success_url = reverse_lazy('libro:listado_bodega')
+    success_url = reverse_lazy('libro:listado_bodegas')
 
 
 
@@ -267,7 +269,7 @@ class ActualizarBodega(UpdateView): # Actualizar Bodega
     model = Bodega
     form_class = BodegaForm
     template_name = 'libro/bodega/bodega.html'
-    success_url = reverse_lazy('libro:listado_bodega')
+    success_url = reverse_lazy('libro:listado_bodegas')
     
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
@@ -278,4 +280,4 @@ class ActualizarBodega(UpdateView): # Actualizar Bodega
 
 class EliminarBodega(DeleteView): # Eliminar Producto de la Bodega
     model = Bodega
-    success_url = reverse_lazy('libro:listado_bodega')
+    success_url = reverse_lazy('libro:listado_bodegas')

@@ -15,7 +15,7 @@
 
 {% block listado %}
 
-    {% if autores %}
+    {% if bodegas %}
     <div class="table-stats order-table ov-h">
         <table id="tabla_libros" class="table">
             <thead>
@@ -57,3 +57,21 @@
 <div class="modal fade" id="creacion" role="dialog"></div>
 <div class="modal fade" id="edicion" role="dialog"></div>
 {% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}
