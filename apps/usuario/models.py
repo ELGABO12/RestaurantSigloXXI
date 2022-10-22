@@ -43,9 +43,8 @@ class Usuario(AbstractBaseUser):
         ('Garzón', 'Garzón'),
         ('Finanzas','Finanzas'),
     }
-    rol = models.CharField('Rol', max_length=14, blank=True, null=True, choices=rol_choice)
+    rol = models.CharField('Rol', max_length=14, blank=True, null=False, choices=rol_choice)
     usuario_activo = models.BooleanField(default = True)
-    usuario_administrador = models.BooleanField(default = False)
     objects = UsuarioManager()
     
     USERNAME_FIELD = 'username'
@@ -62,4 +61,4 @@ class Usuario(AbstractBaseUser):
     
     @property
     def is_staff(self):
-        return self.usuario_administrador
+        return self.rol

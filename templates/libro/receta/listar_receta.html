@@ -33,7 +33,7 @@
                         <td>{{ receta.id }}</td>
                         <td>{{ receta.nombre_receta }}</td>
                         <td>$ {{ receta.precio_receta }}</td>
-                        <td>{{ receta.tiempo_preparacion }}</td>
+                        <td>{{ receta.tiempo_preparacion }} Minutos</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'libro:editar_receta' receta.id %}')" class="btn btn-primary">Editar

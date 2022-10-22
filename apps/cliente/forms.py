@@ -14,7 +14,7 @@ class ReservaForm(forms.ModelForm):
             'telefono_cliente': 'Número de teléfono del cliente',
             'fecha_reserva': 'Día de la reserva',
             'hora_reserva': 'Hora de la reserva',
-            'numero_mesa': 'Mesa asignada',
+            'numero_mesa': 'Elija la mesa que desea reservar',
         }
         widgets = {
             'email_cliente': forms.EmailInput(
@@ -51,7 +51,7 @@ class ReservaForm(forms.ModelForm):
                     'class': 'form-control'
                 }
             ),
-            'numero_mesa': forms.SelectMultiple(
+            'numero_mesa': forms.Select(
                 attrs = {
                     'class': 'form-control'
                 }

@@ -19,7 +19,7 @@ class Reserva(models.Model):
         ('16:00', '16:00'), ('16:15', '16:15'), ('16:30', '16:30'), ('16:45', '16:45'),
     }
     hora_reserva = models.CharField('Hora de la reserva', max_length = 5, blank = True, null = True, choices=hora_choice)
-    numero_mesa = models.ManyToManyField(Mesa)
+    numero_mesa = models.ForeignKey(Mesa, on_delete=models.SET_NULL, null=True, blank=False)
     
     class Meta:
         verbose_name = 'Reserva'

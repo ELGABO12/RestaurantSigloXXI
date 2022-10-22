@@ -41,11 +41,7 @@
                         <td>{{ reserva.telefono_cliente }}</td>
                         <td>{{ reserva.fecha_reserva }}</td>
                         <td>{{ reserva.hora_reserva }}</td>
-                        <td>
-                        {% for mesa in reserva.numero_mesa.all %}
-                        Mesa {{ mesa.id }}
-                        {% endfor %}
-                        </td>
+                        <td>Mesa {{ reserva.numero_mesa }}</td>
                         <td>
                             <div class="table-data-feature"> 
                                 <a href="{% url 'cliente:eliminar_reserva' reserva.cod_reserva %}"><button class="btn btn-danger">Eliminar

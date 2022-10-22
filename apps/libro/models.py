@@ -7,7 +7,7 @@ class Autor(models.Model): #Esto es PRODUCTOS
     nombre_producto = models.CharField(max_length = 200, blank = False, null = False)
     cantidad = models.CharField(max_length = 200, blank = False, null = False)
     precio = models.CharField(max_length = 100, blank = False, null = False)
-    proveedor = models.CharField(max_length = 100, blank = False, null = True)
+    proveedor = models.ForeignKey('Libro' , on_delete=models.SET_NULL, null=True, blank=False)
     descripcion = models.TextField(blank = False, null = False)
     
     class Meta:
@@ -59,7 +59,7 @@ class Receta(models.Model):
     id = models.AutoField(primary_key = True)
     nombre_receta = models.CharField('Nombre de la receta', max_length = 255, blank = False, null = True)
     precio_receta = models.CharField('Precio de la receta', max_length = 7, blank = False, null = True)
-    tiempo_preparacion = models.CharField('Tiempo de preparación', max_length=200, blank = False, null = True)
+    tiempo_preparacion = models.CharField('Tiempo de preparación', max_length=2, blank = False, null = True)
     
     class Meta:
         verbose_name = 'Receta'
@@ -68,6 +68,7 @@ class Receta(models.Model):
         
     def __str__(self):
         return self.nombre_receta
+
 
 
 class Bodega(models.Model):

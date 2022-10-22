@@ -35,11 +35,10 @@ class AutorForm(forms.ModelForm):
                     'id':'precio',
                 }
             ),
-            'proveedor': forms.TextInput(
+            'proveedor': forms.Select(
                 attrs = {
                     'class':'form-control',
                     'placeholder':'Ingrese el nombre del proveedor del producto',
-                    'id':'proveedor',
                 }
             ),
             'descripcion': forms.Textarea(
