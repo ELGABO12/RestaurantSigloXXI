@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
-from apps.cliente.models import Reserva
-from apps.cliente.forms import ReservaForm
+from apps.cliente.models import Reserva, Boleta
+from apps.cliente.forms import ReservaForm, BoletaForm
 
 # Create your views here.
 
@@ -48,3 +48,35 @@ class CrearReserva(CreateView): # Crear Reserva
 class EliminarReserva(DeleteView): #Eliminar Reserva 
     model = Reserva
     success_url = reverse_lazy('cliente:listado_reservas')
+
+
+
+# -------------------------------------------------------
+# -------------------------------------------------------
+# -------------------------------------------------------
+
+
+class ListadoBoleta(View): # Listado de Boletas
+    model = Boleta
+    form_class = BoletaForm
+    template_name = 'cliente/boleta/emitir_boleta.html'  
+    
+    def get_queryset(self):
+        return self.model.objects.filter()
+    
+    def get_context_data(self,**kwargs):
+        contexto = {}
+        contexto['boletas'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+    
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,self.get_context_data())
+        
+        
+
+class CrearBoleta(CreateView): # Crear Reserva
+    model = Boleta
+    form_class = BoletaForm
+    template_name = 'cliente/boleta/crear_boleta.html'
+    success_url = reverse_lazy('cliente:listado_boletas')

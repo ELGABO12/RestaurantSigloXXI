@@ -105,13 +105,14 @@
 
                     <li class="menu-title">Finanzas</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-dollar"></i>Estadísticas</a>
+                        <a href="{% url 'cliente:listado_boletas' %}" > <i class="menu-icon fa fa-dollar"></i>Emitir boleta</a>
                     </li>
 
                     <li class="menu-title">Recepción</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'cliente:listado_reservas' %}"> <i class="menu-icon fa fa-user"></i>Reserva cliente</a>
                     </li>
+
 
                 </ul>
             </div><!-- /.navbar-collapse -->

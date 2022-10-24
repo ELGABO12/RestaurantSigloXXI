@@ -1,6 +1,6 @@
 from socket import fromshare
 from django import forms
-from .models import Reserva
+from .models import Reserva,Boleta
 
 class ReservaForm(forms.ModelForm):
     class Meta:
@@ -54,6 +54,46 @@ class ReservaForm(forms.ModelForm):
             'numero_mesa': forms.Select(
                 attrs = {
                     'class': 'form-control'
+                }
+            ),
+        }
+
+
+
+
+class BoletaForm(forms.ModelForm):
+    class Meta:
+        model = Boleta
+        fields = ['email', 'total_a_pagar', 'fecha_de_pago', 'estado', ]
+        labels = {
+            'email': 'Correo electrónico del cliente',
+            'total_a_pagar': 'Total a pagar',
+            'fecha_de_pago': 'Fecha de pago',
+            'estado': 'Estado',
+        }
+        widgets = {
+            'email': forms.Select(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Ingrese correo del cliente'
+                }
+            ),
+            'total_a_pagar': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Ingrese el total a pagar'
+                }
+            ),
+            'fecha_de_pago': forms.SelectDateWidget(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Ingrese la fecha de pago'
+                }
+            ),
+            'estado': forms.Select(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Seleccione el estado de la boleta'
                 }
             ),
         }

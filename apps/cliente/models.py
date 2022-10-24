@@ -2,6 +2,7 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from apps.libro.models import Mesa
 
+
 # Create your models here.
 
 
@@ -27,4 +28,23 @@ class Reserva(models.Model):
         ordering = ['cod_reserva']
         
     def __str__(self):
-        return self.nombre_cliente
+        return self.email_cliente
+
+
+
+class Boleta(models.Model):
+    id = models.AutoField(primary_key = True)
+    email = models.ForeignKey('Reserva' , on_delete=models.SET_NULL, null=True, blank=False, related_name = "email")
+    total_a_pagar = models.CharField('Total a pagar' , max_length = 6, blank = False, null = False)
+    fecha_de_pago = models.DateField('Fecha de pago' , blank = False, null = False)
+    estado_choice = { ('Pagado', 'Pagado'), ('Pendiente', 'Pendiente') 
+    }
+    estado = models.CharField('Estado de pago', max_length = 12, blank = True, null = True, choices=estado_choice)
+
+    class Meta:
+        verbose_name = 'Boleta'
+        verbose_name_plural = 'Boletas'
+        ordering = ['total_a_pagar']
+
+    def __str__(self):
+        return self.total_a_pagar
