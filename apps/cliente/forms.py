@@ -64,18 +64,18 @@ class ReservaForm(forms.ModelForm):
 class BoletaForm(forms.ModelForm):
     class Meta:
         model = Boleta
-        fields = ['email', 'total_a_pagar', 'fecha_de_pago', 'estado', ]
+        fields = ['nombre_apellido_cliente', 'total_a_pagar', 'fecha_de_pago', 'estado', ]
         labels = {
-            'email': 'Correo electrónico del cliente',
+            'nombre_apellido_cliente': 'Nombre y apellido del cliente',
             'total_a_pagar': 'Total a pagar',
             'fecha_de_pago': 'Fecha de pago',
             'estado': 'Estado',
         }
         widgets = {
-            'email': forms.Select(
+            'nombre_apellido_cliente': forms.Select(
                 attrs = {
                     'class': 'form-control',
-                    'placeholder': ' Ingrese correo del cliente'
+                    'placeholder': ' Seleccione el nombre del cliente'
                 }
             ),
             'total_a_pagar': forms.TextInput(

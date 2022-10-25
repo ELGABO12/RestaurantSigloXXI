@@ -73,6 +73,7 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+
                     <li class="active">
                         <a href="{% url 'index' %}"><i class="menu-icon fa fa-laptop"></i>Inicio </a>
                     </li>
@@ -86,21 +87,21 @@
                         </ul>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="{% url 'libro:listar_autor' %}"> <i class="menu-icon fa fa-filter"></i>Productos</a>
+                        <a href="{% url 'mantenedor:listado_mesas' %}"> <i class="menu-icon fa fa-cutlery"></i>Mesas</a>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="{% url 'libro:listado_mesas' %}"> <i class="menu-icon fa fa-cutlery"></i>Mesas</a>
+                        <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="{% url 'libro:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
-                    </li>
-                    <li class="menu-item dropdown">
-                        <a href="{% url 'libro:listado_libros' %}"> <i class="menu-icon fa fa-truck"></i>Proveedores</a>
+                        <a href="{% url 'mantenedor:listado_proveedores' %}"> <i class="menu-icon fa fa-truck"></i>Proveedores</a>
                     </li>
 
                     <li class="menu-title">Bodega</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
-                        <a href="{% url 'libro:listado_bodegas' %}"> <i class="menu-icon fa fa-tasks"></i>Bodega</a>
+                        <a href="{% url 'mantenedor:listar_producto' %}"> <i class="menu-icon fa fa-filter"></i>Solicitar insumos</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="{% url 'mantenedor:listado_bodegas' %}"> <i class="menu-icon fa fa-tasks"></i>Bodega de insumos</a>
                     </li>
 
                     <li class="menu-title">Finanzas</li><!-- /.menu-title -->
@@ -125,8 +126,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="{% url 'index' %}"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>

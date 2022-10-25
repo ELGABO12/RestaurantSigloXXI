@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+{% block titulo1 %}
+<div>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'mantenedor:crear_proveedor' %}')">Crear Proveedor</button>
+</div>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Proveedores</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if proveedores %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre proveedor</th>
+                    <th>Correo proveedor</th>
+                    <th>Teléfono proveedor</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                    <tr>
+                        <td>{{ proveedor.id }}</td>
+                        <td>{{ proveedor.nombre_proveedor }}</td>
+                        <td>{{ proveedor.correo_proveedor }}</td>
+                        <td>{{ proveedor.telefono_proveedor }}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_proveedor' proveedor.id %}')" class="btn btn-primary">Editar
+                                </button>
+                                
+                                <a href="{% url 'mantenedor:eliminar_proveedor' proveedor.id %}"><button class="btn btn-danger">Eliminar
+                                </button></a>
+                            </div>
+                        </td>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No existen proveedores registrados</h1>
+    {% endif %}
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

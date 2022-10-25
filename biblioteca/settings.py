@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.libro',
+    'apps.mantenedor',
     'apps.usuario',
     'apps.cliente',
 ]
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'rest'),
+        'NAME': os.path.join(BASE_DIR, 'DBrestaurant'),
     }
 }
 

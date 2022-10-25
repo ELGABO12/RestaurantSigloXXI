@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo %}
+    Confirmación de Eliminación
+{% endblock titulo %}
+
+{% block listado %}
+<body>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <p><strong>¿Desea eliminar el registro "{{ mesa.descripcion_mesa }} para {{ mesa.cantidad_personas }} persona(s)"?</strong></p>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+                <a href="{% url 'mantenedor:listado_mesas' %}"><button class="btn btn-danger" type="button">Cancelar</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock listado %}

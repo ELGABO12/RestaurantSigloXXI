@@ -1,6 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from apps.libro.models import Mesa
+from apps.mantenedor.models import Mesa
 
 
 # Create your models here.
@@ -28,13 +28,13 @@ class Reserva(models.Model):
         ordering = ['cod_reserva']
         
     def __str__(self):
-        return self.email_cliente
+        return f'{self.nombre_cliente} {self.apellido_cliente}'
 
 
 
 class Boleta(models.Model):
     id = models.AutoField(primary_key = True)
-    email = models.ForeignKey('Reserva' , on_delete=models.SET_NULL, null=True, blank=False, related_name = "email")
+    nombre_apellido_cliente = models.ForeignKey('Reserva' , on_delete=models.SET_NULL, null=True, blank=False, related_name = "email")
     total_a_pagar = models.CharField('Total a pagar' , max_length = 6, blank = False, null = False)
     fecha_de_pago = models.DateField('Fecha de pago' , blank = False, null = False)
     estado_choice = { ('Pagado', 'Pagado'), ('Pendiente', 'Pendiente') 

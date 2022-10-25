@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+    Eliminación de Productos en Bodega
+{% endblock titulo %}
+
+
+{% block body %}
+
+    <form method="POST">
+        {% csrf_token %}  
+        <h2>¿Desea eliminar el registro {{ bodega.productos }}?</h2>
+            <button type = "submit">Eliminar</button>
+            <a href="{% url 'mantenedor:listar_bodega' %}">Cancelar</a>
+    </form>
+
+{% endblock body %}

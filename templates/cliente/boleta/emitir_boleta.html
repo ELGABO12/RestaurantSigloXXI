@@ -20,10 +20,10 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>Código reserva</th>
-                    <th>Email</th>
+                    <th>Código de boleta</th>
+                    <th>Nombre del cliente</th>
                     <th>Total a pagar</th>
-                    <th>Fecha de pago</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                 {% for boleta in boletas %}
                     <tr>
                         <td>{{ boleta.id }}</td>
-                        <td>{{ boleta.email }}</td>
+                        <td>{{ boleta.nombre_apellido_cliente }}</td>
                         <td>$ {{ boleta.total_a_pagar }}</td>
                         <td>{{ boleta.fecha_de_pago }}</td>
                         <td>{{ boleta.estado }}</td>
