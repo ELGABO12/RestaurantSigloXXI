@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inicio Clientes - Restaurant Siglo XXI</title>
+  <title>Clientes - Restaurant Siglo XXI</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets-3/img/favicon.png' %}" rel="icon">
+  <link href="{% static '#' %}" rel="icon">
   <link href="{% static 'assets-3/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -46,39 +46,21 @@
       <a href="" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
-        <h1>Restaurant Siglo<span>XXI</span></h1>
+        <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#chefs">Chefs</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#acerca">Acerca de nosostros</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#events">Eventos</a></li>
+          <li><a href="#gallery">Galeria</a></li>
+          <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav><!-- .navbar -->
 
-      <a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
+      <a class="btn-book-a-table" href="#book-a-table">Hacer Pedido</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
@@ -86,7 +68,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center section-bg">
+  <section id="inicio" class="hero d-flex align-items-center section-bg">
     <div class="container">
       <div class="row justify-content-between gy-5">
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
@@ -106,19 +88,20 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="acerca" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>About Us</h2>
-          <p>Learn More <span>About Us</span></p>
+          <h2>Acerca de nosotros</h2>
+          <p>Informate más <span>Acerca de nuestro Restaurant</span></p>
         </div>
-
         <div class="row gy-4">
-          <div class="col-lg-7 position-relative about-img" style="background-image: url(assets-3/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-lg-6  position-relative about-img" style="background-image: url(https://lkbitronic.b-cdn.net/wp-content/uploads/2019/07/290719-525624-PIYDKD-830.jpg) ; 
+          background-repeat: no-repeat; background-position: inherit; background-size:cover;" data-aos="fade-up" data-aos-delay="150">
+          <br><br><br>
             <div class="call-us position-absolute">
-              <h4>Book a Table</h4>
-              <p>+1 5589 55488 55</p>
+              <h4>Haz tu pedido</h4>
+              <p>+569 1234 5678</p>
             </div>
           </div>
           <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
@@ -754,78 +737,6 @@
       </div>
     </section><!-- End Events Section -->
 
-    <!-- ======= Chefs Section ======= -->
-    <section id="chefs" class="chefs section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>Chefs</h2>
-          <p>Our <span>Proffesional</span> Chefs</p>
-        </div>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="{% static 'assets-3/img/chefs/chefs-1.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Master Chef</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="{% static 'assets-3/img/chefs/chefs-2.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Patissier</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="chef-member">
-              <div class="member-img">
-                <img src="{% static 'assets-3/img/chefs/chefs-3.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cook</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
-              </div>
-            </div>
-          </div><!-- End Chefs Member -->
-
-        </div>
-
-      </div>
-    </section><!-- End Chefs Section -->
 
     <!-- ======= Book A Table Section ======= -->
     <section id="book-a-table" class="book-a-table">
