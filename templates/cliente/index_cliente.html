@@ -59,7 +59,22 @@
           <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav><!-- .navbar -->
+      <div class="top-right">
+        <div class="header-menu">
+            <div class="header-left">
+            </div>
+            <div class="user-area dropdown float-right">
+                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido {{ user.username }}</h3>
+                </a>
 
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power -off"></i>Cerrar Sesión</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
       <a class="btn-book-a-table" href="#book-a-table">Hacer Pedido</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -79,7 +94,7 @@
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-          <img src="{% static 'assets-3/img/hero-img.png' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'assets-3/img/completo-italiano.jpg' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
     </div>
@@ -96,8 +111,8 @@
           <p>Informate más <span>Acerca de nuestro Restaurant</span></p>
         </div>
         <div class="row gy-4">
-          <div class="col-lg-6  position-relative about-img" style="background-image: url(https://lkbitronic.b-cdn.net/wp-content/uploads/2019/07/290719-525624-PIYDKD-830.jpg) ; 
-          background-repeat: no-repeat; background-position: inherit; background-size:cover;" data-aos="fade-up" data-aos-delay="150">
+          <div class="col-lg-6  position-relative about-img" style="background-image: url(https://i0.wp.com/imaginasantiago.com/wp-content/uploads/2014/01/Liguria2.jpg?resize=600%2C400&ssl=1) ; 
+          background-repeat: no-repeat; background-position: center; background-size:cover;" data-aos="fade-up" data-aos-delay="150">
           <br><br><br>
             <div class="call-us position-absolute">
               <h4>Haz tu pedido</h4>
@@ -107,18 +122,14 @@
           <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
             <div class="content ps-0 ps-lg-5">
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Disfruta de las mejores recetas aqui en Restaurant Siglo XXI
               </p>
               <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="bi bi-check2-all"></i> Un lugar que te envuelve con su aroma, su decoración, su espíritu. </li>
+                <li><i class="bi bi-check2-all"></i> Con los mejores ingredientes de calidad la cual te atrapa y mejora tu estado de ánimo en un momento </li>
+                <li><i class="bi bi-check2-all"></i> Saborea también con los platos tradiccionales de la cocina Chilena</li>
               </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
+              <p></p>
 
               <div class="position-relative mt-4">
                 <img src="{% static 'assets-3/img/about-2.jpg' %}" class="img-fluid" alt="">
@@ -194,28 +205,28 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
+              <p>Clientes</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
+              <p>Projectos</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <p>Horas de trabajo</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
+              <p>Trabajadores</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -229,32 +240,32 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Our Menu</h2>
-          <p>Check Our <span>Yummy Menu</span></p>
+          <h2>Nuestro Menú</h2>
+          <p>Disfruta de Nuestro<span> Delicioso Menú</span></p>
         </div>
 
         <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
           <li class="nav-item">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-              <h4>Starters</h4>
+              <h4>Entrantes</h4>
             </a>
           </li><!-- End tab nav item -->
 
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-              <h4>Breakfast</h4>
+              <h4>Desayuno</h4>
             </a><!-- End tab nav item -->
 
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-              <h4>Lunch</h4>
+              <h4>Almuerzo</h4>
             </a>
           </li><!-- End tab nav item -->
 
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-              <h4>Dinner</h4>
+              <h4>Cena</h4>
             </a>
           </li><!-- End tab nav item -->
 
@@ -265,8 +276,8 @@
           <div class="tab-pane fade active show" id="menu-starters">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Starters</h3>
+              <p>Menú</p>
+              <h3>Entrantes</h3>
             </div>
 
             <div class="row gy-5">
@@ -343,8 +354,8 @@
           <div class="tab-pane fade" id="menu-breakfast">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Breakfast</h3>
+              <p>Menú</p>
+              <h3>Desayuno</h3>
             </div>
 
             <div class="row gy-5">
@@ -421,8 +432,8 @@
           <div class="tab-pane fade" id="menu-lunch">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Lunch</h3>
+              <p>Menú</p>
+              <h3>Almuerzo</h3>
             </div>
 
             <div class="row gy-5">
@@ -499,8 +510,8 @@
           <div class="tab-pane fade" id="menu-dinner">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Dinner</h3>
+              <p>Menú</p>
+              <h3>Cena</h3>
             </div>
 
             <div class="row gy-5">
@@ -992,6 +1003,30 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets-3/js/main.js' %}"></script>
+
+   <!-- Jquery JS-->
+   <script src="{% static 'assets-2/vendor/jquery-3.2.1.min.js' %}"></script>
+   <!-- Bootstrap JS-->
+   <script src="{% static 'assets-2/vendor/bootstrap-4.1/popper.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+   <!-- Vendor JS       -->
+   <script src="{% static 'assets-2/vendor/slick/slick.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/wow/wow.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/animsition/animsition.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/counter-up/jquery.counterup.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/circle-progress/circle-progress.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/chartjs/Chart.bundle.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/select2/select2.min.js' %}">
+   </script>
+
+   <!-- Main JS-->
+   <script src="{% static 'assets-2/js/main.js' %}"></script>
 
 </body>
 
