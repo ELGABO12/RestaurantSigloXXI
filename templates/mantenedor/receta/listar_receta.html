@@ -23,6 +23,7 @@
                     <th>ID</th>
                     <th>Nombre de la receta</th>
                     <th>Precio de la receta</th>
+                    <th>Imagen</th>
                     <th>Tiempo de preparación aprox.</th>
                     <th>Opciones</th>
                 </tr>
@@ -33,6 +34,13 @@
                         <td>{{ receta.id }}</td>
                         <td>{{ receta.nombre_receta }}</td>
                         <td>$ {{ receta.precio_receta }}</td>
+                        <td>
+                            {% if receta.image.url %}
+                              <img src="{{receta.image.url}}" width="120" height="50">
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                        </td>
                         <td>{{ receta.tiempo_preparacion }} Minutos</td>
                         <td>
                             <div class="table-data-feature">

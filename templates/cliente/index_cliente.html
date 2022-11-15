@@ -63,13 +63,12 @@
         <div class="header-menu">
             <div class="header-left">
             </div>
+            {% if user.is_authenticated %}
             <div class="user-area dropdown float-right">
-                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido {{ user.username }}</h3>
                 </a>
-
-                <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power -off"></i>Cerrar Sesión</a>
+            {% endif %}
                 </div>
             </div>
 

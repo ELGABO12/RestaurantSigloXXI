@@ -127,10 +127,11 @@ class MesaForm(forms.ModelForm):
 class RecetaForm(forms.ModelForm):
     class Meta:
         model = Receta
-        fields = ('nombre_receta', 'precio_receta', 'tiempo_preparacion')
+        fields = ('nombre_receta', 'precio_receta', 'image', 'tiempo_preparacion')
         label = {
             'nombre_receta':'Nombre de la receta',
             'precio_receta':'Precio de la receta',
+            'image':'Imagen de la receta',
             'tiempo_preparacion':'Tiempo de preparación aprox.',
         }
         widgets = {
