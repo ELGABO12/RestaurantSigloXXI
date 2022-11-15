@@ -198,7 +198,7 @@ class ListadoReceta(View): # Listado de Recetas
     def get_context_data(self,**kwargs):
         contexto = {}
         contexto['recetas'] = self.get_queryset()
-        contexto['form'] = self.form_class
+        contexto['form'] = self.form_class()
         return contexto
     
     def get(self,request,*args,**kwargs):
