@@ -15,9 +15,6 @@ class CodigoReserva(TemplateView):
     
 class Menu(TemplateView):
     template_name = 'cliente/area_cliente/menu.html'
-    
-class AcercaNosotros(TemplateView):
-    template_name = 'cliente/area_cliente/acerca_nosotros.html'
 
 
 # -------------------------------------------------------
