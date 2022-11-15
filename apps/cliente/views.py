@@ -8,10 +8,16 @@ from apps.cliente.forms import ReservaForm, BoletaForm
 
 
 class InicioCliente(TemplateView):
-    template_name = 'cliente/index_cliente.html'
+    template_name = 'cliente/area_cliente/index_cliente.html'
     
 class CodigoReserva(TemplateView):
-    template_name = 'cliente/codigo_reserva.html'
+    template_name = 'cliente/area_cliente/codigo_reserva.html'
+    
+class Menu(TemplateView):
+    template_name = 'cliente/area_cliente/menu.html'
+    
+class AcercaNosotros(TemplateView):
+    template_name = 'cliente/area_cliente/acerca_nosotros.html'
 
 
 # -------------------------------------------------------

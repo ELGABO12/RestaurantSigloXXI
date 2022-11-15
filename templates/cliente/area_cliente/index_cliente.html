@@ -1,0 +1,473 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Clientes - Restaurant Siglo XXI</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static '#' %}" rel="icon">
+  <link href="{% static 'assets-3/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets-3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-3/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-3/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-3/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets-3/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets-3/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Yummy - v1.2.1
+  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
+        <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'cliente:inicio_cliente' %}">Inicio</a></li>
+          <li><a href="{% url 'cliente:inicio_cliente' %}#acerca">Acerca de nosostros</a></li>
+          <li><a href="{% url 'cliente:inicio_cliente' %}#galeria">Galeria</a></li>
+          <li><a href="{% url 'cliente:inicio_cliente' %}#contact">Contacto</a></li>
+          <li><a href="{% url 'cliente:menu' %}">Menú</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+      <div class="top-right">
+        <div class="header-menu">
+            <div class="header-left">
+            </div>
+            {% if user.is_authenticated %}
+            <div class="user-area dropdown float-right">
+                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido {{ user.username }}</h3>
+                </a>
+            {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+      <a class="btn-book-a-table" href="">Iniciar pedido</a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="inicio" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+      <div class="row justify-content-between gy-5">
+        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+          <h2 data-aos="fade-up">Disfruta tu comida en<br>Nuestro restaurant</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Haciendo click en el botón rojo de abajo puedes ver el menú y hacer tu pedido, adelante!</p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#book-a-table" class="btn-book-a-table">Iniciar pedido</a>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+          <img src="{% static 'assets-3/img/completo-italiano.jpg' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="acerca" class="about">
+      <div class="container" data-aos="fade-up">
+        <br>
+        <div class="section-header">
+          <h2>Acerca de nosotros</h2>
+          <p>Informate más <span>Acerca de nuestro Restaurant</span></p>
+        </div>
+        <div class="row gy-4">
+          <div class="col-lg-6  position-relative about-img" style="background-image: url(https://i0.wp.com/imaginasantiago.com/wp-content/uploads/2014/01/Liguria2.jpg?resize=600%2C400&ssl=1) ; 
+          background-repeat: no-repeat; background-position: center; background-size:cover;" data-aos="fade-up" data-aos-delay="150">
+          <br><br><br>
+            <div class="call-us position-absolute">
+              <h4>Haz tu pedido</h4>
+              <p>+569 1234 5678</p>
+            </div>
+          </div>
+          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Disfruta de las mejores recetas aqui en Restaurant Siglo XXI
+              </p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> Un lugar que te envuelve con su aroma, su decoración, su espíritu. </li>
+                <li><i class="bi bi-check2-all"></i> Con los mejores ingredientes de calidad la cual te atrapa y mejora tu estado de ánimo en un momento </li>
+                <li><i class="bi bi-check2-all"></i> Saborea también con los platos tradiccionales de la cocina Chilena</li>
+              </ul>
+              <p></p>
+
+              <div class="position-relative mt-4">
+                <img src="{% static 'assets-3/img/about-2.jpg' %}" class="img-fluid" alt="">
+                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Opiniones</h2>
+          <p>¿Que dicen <span>de nosotros?</span></p>
+        </div>
+
+        <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>Saul Goodman</h3>
+                      <h4>Ceo &amp; Founder</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="{% static 'assets-3/img/testimonials/testimonials-1.jpg' %}" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>Sara Wilsson</h3>
+                      <h4>Designer</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="{% static 'assets-3/img/testimonials/testimonials-2.jpg' %}" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>Jena Karlis</h3>
+                      <h4>Store Owner</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="{% static 'assets-3/img/testimonials/testimonials-3.jpg' %}" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>John Larson</h3>
+                      <h4>Entrepreneur</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="{% static 'assets-3/img/testimonials/testimonials-4.jpg' %}" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <div>
+      <br>
+    </div>
+
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="galeria" class="gallery section-bg">
+      <div class="container" data-aos="fade-up">
+        <br>
+        <div class="section-header">
+          <h2>Galeria</h2>
+          <p>Revisa<span> nuestra galeria</span></p>
+        </div>
+
+        <div class="gallery-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-1.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-1.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-2.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-2.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-3.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-3.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-4.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-4.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-5.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-5.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-6.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-6.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-7.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-7.jpg' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="{% static 'assets-3/img/gallery/gallery-8.jpg' %}"><img src="{% static 'assets-3/img/gallery/gallery-8.jpg' %}" class="img-fluid" alt=""></a></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
+
+
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <br>
+        <div class="section-header">
+          <h2>Contactanos</h2>
+          <p>Necesitas ayuda? <span>Contacta con nosotros</span></p>
+        </div>
+
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.6673451801106!2d-70.75803754529151!3d-33.5099780117508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dd0ac13de2fd%3A0xa71cb5383a764f90!2sKFC!5e0!3m2!1ses!2scl!4v1668365362448!5m2!1ses!2scl" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-map flex-shrink-0"></i>
+              <div>
+                <h3>Nuestra Dirección</h3>
+                <p>Av. Los Pajaritos 1948, Maipú, Región Metropolitana</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Envíanos un correo electrónico</h3>
+                <p>RestsigloXXI@hotmail.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Llamanos</h3>
+                <p>+569 12345678</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-clock flex-shrink-0"></i>
+              <div>
+                <h3>Nuestro Horario</h3>
+                <div><strong>Lun-Sab:</strong> 11:00 - 19:30 CHL;
+                  <strong>Domingo:</strong> Cerrado
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Dirección</h4>
+            <p>
+              Av. Los Pajaritos  <br>
+              Maipú, 1948 - Región Metropolitana CHL<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Reservaciones</h4>
+            <p>
+              <strong>Telefono:</strong> +569 1234 5678<br>
+              <strong>Correo:</strong> RestsigloXXI@hotmail.com<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Horario</h4>
+            <p>
+              <strong>Lunes-Sabado: 11:00 - 23:59</strong> CHL<br>
+              Domingo: Cerrado
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Síguenos</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Restaurant Siglo XXI</span></strong>. Todos los derechos reservados
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets-3/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets-3/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets-3/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets-3/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets-3/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets-3/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets-3/js/main.js' %}"></script>
+
+   <!-- Jquery JS-->
+   <script src="{% static 'assets-2/vendor/jquery-3.2.1.min.js' %}"></script>
+   <!-- Bootstrap JS-->
+   <script src="{% static 'assets-2/vendor/bootstrap-4.1/popper.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+   <!-- Vendor JS       -->
+   <script src="{% static 'assets-2/vendor/slick/slick.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/wow/wow.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/animsition/animsition.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/counter-up/jquery.counterup.min.js' %}">
+   </script>
+   <script src="{% static 'assets-2/vendor/circle-progress/circle-progress.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/chartjs/Chart.bundle.min.js' %}"></script>
+   <script src="{% static 'assets-2/vendor/select2/select2.min.js' %}">
+   </script>
+
+   <!-- Main JS-->
+   <script src="{% static 'assets-2/js/main.js' %}"></script>
+
+</body>
+
+</html>
