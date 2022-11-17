@@ -1,0 +1,5 @@
+Django==2.2.4
+Pillow==8.4.0
+cx_oracle==8.3.0
+pytz==2022.5
+sqlparse==0.4.3

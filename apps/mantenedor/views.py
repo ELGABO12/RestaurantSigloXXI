@@ -18,10 +18,6 @@ from .models import Producto, Proveedor, Mesa, Receta, Bodega
     2.- http_method_not_allowed(): Retorna un error cuando se utiliza un método HTTP no soportado o definido.
     3.- options()
 """
-
-
-class Inicio(TemplateView):
-    template_name = 'index.html'
     
     
     

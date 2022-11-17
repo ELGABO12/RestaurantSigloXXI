@@ -1,4 +1,4 @@
-"""biblioteca URL Configuration
+"""restaurant URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -16,8 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-from apps.mantenedor.views import Inicio
-from apps.usuario.views import Login, logoutUsuario
+from apps.usuario.views import Inicio, Login, logoutUsuario
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,7 +25,7 @@ urlpatterns = [
     path('usuarios/', include(('apps.usuario.urls', 'usuarios'))),
     path('cliente/', include('apps.cliente.urls', 'cliente')),
     path('mantenedor/', include(('apps.mantenedor.urls', 'mantenedor'))),
-    path('', login_required(Inicio.as_view()), name = 'index'),
+    path('', Inicio.as_view(), name = 'index'),
     path('accounts/login/', Login.as_view(), name = 'login'),
     path('logout/', login_required(logoutUsuario), name = 'logout'),
 ]
