@@ -30,10 +30,11 @@ class FormularioUsuario(forms.ModelForm):
             'required':'required',
             }
     ))
+
     
     class Meta:
         model=Usuario
-        fields=('email','username','nombres','apellidos','rol')
+        fields=('email','username','nombres','apellidos','groups')
         widgets={
             'email':forms.EmailInput(
                 attrs={
@@ -59,7 +60,7 @@ class FormularioUsuario(forms.ModelForm):
                     'placeholder':'Ingrese su nombre de usuario',
                 }
             ),
-            'rol':forms.Select(
+            'groups': forms.SelectMultiple(
                 attrs={
                     'class':'form-control',
                 }
@@ -81,7 +82,7 @@ class FormularioUsuario(forms.ModelForm):
         
         
     def save(self,commit = True):
-        user = super().save(commit = False)
+        user = super().save(commit = True)
         user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()

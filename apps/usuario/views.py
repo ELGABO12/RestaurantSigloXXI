@@ -6,11 +6,11 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
 from django.contrib.auth import login,logout
 from django.http import HttpResponseRedirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView,TemplateView
 from apps.usuario.models import Usuario
 from .forms import FormularioLogin, FormularioUsuario
-from apps.usuario.mixins import LoginYSuperUsuarioMixin
+from apps.usuario.mixins import LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin
 
 # Create your views here.
 
@@ -57,15 +57,15 @@ def logoutUsuario(request):
 
 
 
-class ListadoUsuario(LoginYSuperUsuarioMixin, ListView):
+class ListadoUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin, ListView):
     model = Usuario
     template_name = 'usuarios/listar_usuario.html'
     
     def get_queryset(self):
-        return self.model.objects.filter(usuario_activo=True)
+        return self.model.objects.filter(is_active=True)
 
 
-class RegistrarUsuario(LoginYSuperUsuarioMixin, CreateView):
+class RegistrarUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin, CreateView):
     model = Usuario
     form_class = FormularioUsuario
     template_name = 'usuarios/crear_usuario.html'
@@ -79,7 +79,6 @@ class RegistrarUsuario(LoginYSuperUsuarioMixin, CreateView):
                 username = form.cleaned_data.get('username'),
                 nombres = form.cleaned_data.get('nombres'),
                 apellidos = form.cleaned_data.get('apellidos'),
-                rol = form.cleaned_data.get('rol'),
             )
             nuevo_usuario.set_password(form.cleaned_data.get('password1'))
             nuevo_usuario.save()
@@ -88,7 +87,7 @@ class RegistrarUsuario(LoginYSuperUsuarioMixin, CreateView):
             return render(request, self.template_name,{'form':form})
     
 
-class ActualizarUsuario(LoginYSuperUsuarioMixin, UpdateView):
+class ActualizarUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin, UpdateView):
     model = Usuario
     form_class = FormularioUsuario
     template_name = 'usuarios/usuario.html'
@@ -100,6 +99,6 @@ class ActualizarUsuario(LoginYSuperUsuarioMixin, UpdateView):
         return context
     
 
-class EliminarUsuario(LoginYSuperUsuarioMixin, DeleteView):
+class EliminarUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin, DeleteView):
     model = Usuario
     success_url = reverse_lazy('usuarios:listar_usuarios')

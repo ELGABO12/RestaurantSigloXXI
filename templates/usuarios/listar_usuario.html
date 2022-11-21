@@ -1,6 +1,9 @@
 {% extends 'index.html' %}
 
 {% block titulo1 %}
+<div>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'usuarios:registrar_usuario' %}')">Crear Usuario</button>
+</div>
     <div class="card-header">
         <div class="row">
             <div class="col-md-8">
@@ -22,7 +25,7 @@
                     <th>Email</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Rol</th>
+                    <th>Grupo</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -34,11 +37,11 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.nombres }}</td>
                         <td>{{ usuario.apellidos }}</td>
-                        <td>{{ usuario.rol }}</td>
+                        <td>{% for group in usuario.groups.all %}{{group}}{% if not forloop.last %},{% endif %}{% endfor %}</td>
                         <td>
                             <div class="table-data-feature">
-                                <a href="{% url 'usuarios:editar_usuario' usuario.id %}"><button class="btn btn-primary">Editar
-                                </button></a>
+                                <button onclick="abrir_modal_edicion('{% url 'usuarios:editar_usuario' usuario.id %}')" class="btn btn-primary">Editar
+                                </button>
                                 
                                 <a href="{% url 'usuarios:eliminar_usuario' usuario.id %}"><button class="btn btn-danger">Eliminar
                                 </button></a>
@@ -55,4 +58,25 @@
         <h1>No existen usuarios registrados</h1>
     {% endif %}
 
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+
 {% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

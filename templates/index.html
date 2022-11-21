@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load auth_extras %}
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -66,7 +68,7 @@
 
     </style>
 </head>
-
+    
 <body>
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
@@ -77,44 +79,59 @@
                     <li class="active">
                         <a href="{% url 'index' %}"><i class="menu-icon fa fa-home"></i>Inicio </a>
                     </li>
+
+
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_staff %} 
                     <li class="menu-title">Mantenedores</li><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                class="menu-icon fa fa-users"></i>Usuarios</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-list"></i><a href="{% url 'usuarios:listar_usuarios' %}">Listado de Usuarios</a></li>
-                            <li><i class="fa fa-plus-circle"></i><a href="{% url 'usuarios:registrar_usuario' %}">Registro de Usuarios</a></li>                            
-                        </ul>
+                {% endif %}
+                
+
+                {% if request.user|has_group:"Administrador" or request.user.is_staff %}
+                    <li class="menu-item dropdown">
+                        <a href="{% url 'usuarios:listar_usuarios' %}"> <i class="menu-icon fa fa-users"></i>Usuarios</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_mesas' %}"> <i class="menu-icon fa fa-cutlery"></i>Mesas</a>
-                    </li>
+                    </li>  
+                {% endif %}
+
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_staff %}
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
                     </li>
+                {% endif %}
+
+                {% if request.user|has_group:"Administrador" or request.user.is_staff %}
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_proveedores' %}"> <i class="menu-icon fa fa-truck"></i>Proveedores</a>
                     </li>
+                {% endif %}
 
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Bodega" or request.user.is_staff %}
                     <li class="menu-title">Bodega</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listar_producto' %}"> <i class="menu-icon fa fa-filter"></i>Solicitar insumos</a>
                     </li>
+                
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_bodegas' %}"> <i class="menu-icon fa fa-tasks"></i>Bodega de insumos</a>
                     </li>
+                {% endif %}
 
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Finanzas" or request.user.is_staff %}
                     <li class="menu-title">Finanzas</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'cliente:listado_boletas' %}" > <i class="menu-icon fa fa-dollar"></i>Emitir boleta</a>
                     </li>
+                {% endif %}
 
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Recepcion" or request.user.is_staff %}
                     <li class="menu-title">Recepción</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'cliente:listado_reservas' %}"> <i class="menu-icon fa fa-user"></i>Reserva cliente</a>
                     </li>
-
-
+                {% endif %}
+            
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

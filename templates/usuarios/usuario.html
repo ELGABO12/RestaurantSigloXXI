@@ -1,23 +1,20 @@
-{% extends 'index.html' %}
-
-{% block titulo1 %}
-{% endblock titulo1 %}
-
-
-{% block listado %}
-<div class="card">
-    <div class="card-header">
-        <strong class="card-title">Edición de Usuarios</strong>
-    </div>
-    <div class="card-body">
-        <form method="POST">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Edición de Usuario</h2>
+            <button class="close" type="button" data-dismiss="modal" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form action="{% url 'usuarios:editar_usuario' object.id %}" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <div class="">
-                <button class="btn btn-primary" type="submit">Editar</button>
-                <a href="{% url 'usuarios:listar_usuarios' %}" class="btn btn-danger">Cancelar</a>
+            <div class="modal-body">
+                {{ form.as_p }}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-primary" type="submit">Confirmar</button>
             </div>
         </form>
     </div>
 </div>
-{% endblock listado %}
