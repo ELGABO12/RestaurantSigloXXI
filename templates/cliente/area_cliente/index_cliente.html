@@ -48,7 +48,7 @@
         <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
         <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
       </a>
-
+{% block nav %}
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{% url 'cliente:inicio_cliente' %}">Inicio</a></li>
@@ -58,6 +58,7 @@
           <li><a href="{% url 'cliente:menu' %}">Menú</a></li>
         </ul>
       </nav><!-- .navbar -->
+
       <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
@@ -73,14 +74,15 @@
 
         </div>
     </div>
-      <a class="btn-book-a-table" href="">Iniciar pedido</a>
+      <a class="btn-book-a-table" href="{% url 'cliente:tienda' %}">Iniciar pedido</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
+{% endblock %}
   </header><!-- End Header -->
 
-{% block content %}
+  {% block content %}
 
   <!-- ======= Hero Section ======= -->
   <section id="inicio" class="hero d-flex align-items-center section-bg">
@@ -90,7 +92,7 @@
           <h2 data-aos="fade-up">Disfruta tu comida en<br>Nuestro restaurant</h2>
           <p data-aos="fade-up" data-aos-delay="100">Haciendo click en el botón rojo de abajo puedes ver el menú y hacer tu pedido, adelante!</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Iniciar pedido</a>
+            <a href="{% url 'cliente:tienda' %}" class="btn-book-a-table">Iniciar pedido</a>
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
@@ -431,7 +433,6 @@
   <!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets-3/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

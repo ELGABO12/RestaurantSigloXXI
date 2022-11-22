@@ -1,0 +1,36 @@
+{% extends 'cliente/area_cliente/tienda.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<br><br><br>
+<div class="section-header">
+    <br>
+    <h2>Nuestros platos</h2>
+    <p>Escoge el plato<span> Que quieres pedir</span></p>
+  </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                {% for receta in recetas %}
+                    <div class="col-md-3 col-sm-12 col-lg-3">
+                        <div class="card" style="width:100%;">
+                            <img src="{{ receta.image.url }}" style="width:100%;" class="card-img-top" alt="{{ receta.nombre_receta }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ receta.nombre_receta }}</h5>
+                                <p class="card-text text-center">${{ receta.precio_receta }}</p>
+                                <p class="card-text text-center">{{ receta.tiempo_preparacion }} minutos de preparación</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="#" class="btn btn-success">Agregar a mi pedido</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-3">
+            {% comment %} Aqui va el widget de los productos que tiene el cliente en el carrito {% endcomment %}
+        </div>
+    </div>
+<br>
+{% endblock %}

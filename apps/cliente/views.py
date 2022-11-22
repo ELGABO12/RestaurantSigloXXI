@@ -1,11 +1,22 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
+from apps.mantenedor.models import Receta
 from apps.cliente.models import Reserva, Boleta
 from apps.cliente.forms import ReservaForm, BoletaForm
 
 # Create your views here.
 
+
+def lista_de_recetas(request):
+    recetas = Receta.objects.all()
+    return render(request, "cliente/area_cliente/listado.html", {
+        "recetas": recetas
+    })
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 class InicioCliente(TemplateView):
     template_name = 'cliente/area_cliente/index_cliente.html'
@@ -16,6 +27,8 @@ class CodigoReserva(TemplateView):
 class Menu(TemplateView):
     template_name = 'cliente/area_cliente/menu.html'
 
+class Tienda(TemplateView):
+    template_name = 'cliente/area_cliente/tienda.html'
 
 # -------------------------------------------------------
 # -------------------------------------------------------

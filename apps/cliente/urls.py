@@ -6,6 +6,8 @@ urlpatterns = [
     path('inicio_cliente/', InicioCliente.as_view(), name = 'inicio_cliente'),
     path('codigo_reserva/', CodigoReserva.as_view(), name = 'codigo_reserva'),
     path('menu/', Menu.as_view(), name = 'menu'),
+    path('lista_de_recetas/', lista_de_recetas, name ='lista_de_recetas'),
+    path('tienda/', Tienda.as_view(), name = 'tienda'),
     
     path('listar_reservas/', login_required(ListadoReserva.as_view()), name = 'listado_reservas'),
     path('crear_reserva/', login_required(CrearReserva.as_view()), name = 'crear_reserva'),

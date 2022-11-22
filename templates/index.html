@@ -81,12 +81,12 @@
                     </li>
 
 
-                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_staff %} 
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_superuser %} 
                     <li class="menu-title">Mantenedores</li><!-- /.menu-title -->
                 {% endif %}
                 
 
-                {% if request.user|has_group:"Administrador" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user.is_superuser %}
                     <li class="menu-item dropdown">
                         <a href="{% url 'usuarios:listar_usuarios' %}"> <i class="menu-icon fa fa-users"></i>Usuarios</a>
                     </li>
@@ -95,19 +95,19 @@
                     </li>  
                 {% endif %}
 
-                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_superuser %}
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
                     </li>
                 {% endif %}
 
-                {% if request.user|has_group:"Administrador" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user.is_superuser %}
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_proveedores' %}"> <i class="menu-icon fa fa-truck"></i>Proveedores</a>
                     </li>
                 {% endif %}
 
-                {% if request.user|has_group:"Administrador" or request.user|has_group:"Bodega" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Bodega" or request.user.is_superuser %}
                     <li class="menu-title">Bodega</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listar_producto' %}"> <i class="menu-icon fa fa-filter"></i>Solicitar insumos</a>
@@ -118,14 +118,14 @@
                     </li>
                 {% endif %}
 
-                {% if request.user|has_group:"Administrador" or request.user|has_group:"Finanzas" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Finanzas" or request.user.is_superuser %}
                     <li class="menu-title">Finanzas</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'cliente:listado_boletas' %}" > <i class="menu-icon fa fa-dollar"></i>Emitir boleta</a>
                     </li>
                 {% endif %}
 
-                {% if request.user|has_group:"Administrador" or request.user|has_group:"Recepcion" or request.user.is_staff %}
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Recepcion" or request.user.is_superuser %}
                     <li class="menu-title">Recepción</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
                         <a href="{% url 'cliente:listado_reservas' %}"> <i class="menu-icon fa fa-user"></i>Reserva cliente</a>

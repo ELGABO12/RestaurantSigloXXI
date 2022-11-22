@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'apps.mantenedor',
     'apps.usuario',
     'apps.cliente',
+    
+    # PACKAGES
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
