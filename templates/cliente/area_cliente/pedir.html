@@ -1,5 +1,15 @@
-{% extends 'cliente/area_cliente/tienda.html' %}
+{% extends 'cliente/area_cliente/index_cliente.html' %}
 {% load staticfiles %}
+<html>
+    <body>
+{% block nav %}
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a href="{% url 'cliente:pedir' %}">Recetas</a></li>
+        <li><a href="{% url 'cliente:inicio_cliente' %}">Volver al inicio</a></li>
+    </ul>
+</nav><!-- .navbar -->
+{% endblock %}
 
 {% block content %}
 <br><br><br>
@@ -9,7 +19,7 @@
     <p>Escoge el plato<span> Que quieres pedir</span></p>
   </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-8">
             <div class="row">
                 {% for receta in recetas %}
                     <div class="col-md-3 col-sm-12 col-lg-3">
@@ -21,7 +31,7 @@
                                 <p class="card-text text-center">{{ receta.tiempo_preparacion }} minutos de preparación</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="#" class="btn btn-success">Agregar a mi pedido</a>
+                                <a href="{% url 'cliente:Add' receta.id %}" class="btn btn-success">Agregar a mi pedido</a>
                             </div>
                         </div>
                     </div>
@@ -29,8 +39,13 @@
             </div>
         </div>
         <div class="col-3">
-            {% comment %} Aqui va el widget de los productos que tiene el cliente en el carrito {% endcomment %}
+            {% include "cliente/area_cliente/carrito.html" %}
         </div>
     </div>
 <br>
 {% endblock %}
+
+    <script src="{% static 'assets-3/js/jquery.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'assets-3/js/bootstrap.min.js' %}" charset="utf-8"></script>
+  </body>
+</html>

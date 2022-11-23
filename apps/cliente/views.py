@@ -1,18 +1,49 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from apps.mantenedor.models import Receta
 from apps.cliente.models import Reserva, Boleta
 from apps.cliente.forms import ReservaForm, BoletaForm
+from apps.carrito.cart import Cart
 
 # Create your views here.
 
 
-def lista_de_recetas(request):
+def pedir(request):
     recetas = Receta.objects.all()
-    return render(request, "cliente/area_cliente/listado.html", {
+    return render(request, "cliente/area_cliente/pedir.html", {
         "recetas": recetas
     })
+
+
+def agregar_producto(request, receta_id):
+    cart = Cart(request)
+    receta = Receta.objects.get(id=receta_id)
+    cart.add(receta)
+    return redirect("cliente:pedir")
+
+
+def eliminar_producto(request, receta_id):
+    cart = Cart(request)
+    receta = Receta.objects.get(id=receta_id)
+    cart.remove(receta)
+    return redirect("cliente:pedir")
+
+
+def restar_producto(request, receta_id):
+    cart = Cart(request)
+    receta = Receta.objects.get(id=receta_id)
+    cart.decrement(receta)
+    return redirect("cliente:pedir")
+
+
+def limpiar_carrito(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cliente:pedir")
+
+
+
 
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------

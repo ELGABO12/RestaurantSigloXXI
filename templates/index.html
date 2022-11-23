@@ -80,7 +80,6 @@
                         <a href="{% url 'index' %}"><i class="menu-icon fa fa-home"></i>Inicio </a>
                     </li>
 
-
                 {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_superuser %} 
                     <li class="menu-title">Mantenedores</li><!-- /.menu-title -->
                 {% endif %}
@@ -131,7 +130,12 @@
                         <a href="{% url 'cliente:listado_reservas' %}"> <i class="menu-icon fa fa-user"></i>Reserva cliente</a>
                     </li>
                 {% endif %}
-            
+                
+                    <li class="menu-title">Área cliente</li><!-- /.menu-title -->
+                    <li class="menu-item dropdown">
+                        <a href="{% url 'cliente:inicio_cliente' %}"> <i class="menu-icon fa fa-users"></i>Área cliente</a>
+                    </li>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

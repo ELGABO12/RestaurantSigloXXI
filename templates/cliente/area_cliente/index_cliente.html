@@ -65,8 +65,9 @@
             </div>
             {% if user.is_authenticated %}
             <div class="user-area dropdown float-right">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido {{ user.username }}</h3>
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido al área cliente {{ user.username }}</h3>
+                <a href="{% url 'index' %}">
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Ir a área administrativa</h3>
                 </a>
             {% endif %}
                 </div>
@@ -74,7 +75,7 @@
 
         </div>
     </div>
-      <a class="btn-book-a-table" href="{% url 'cliente:tienda' %}">Iniciar pedido</a>
+      <a class="btn-book-a-table" href="{% url 'cliente:pedir' %}">Iniciar pedido</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
@@ -92,7 +93,7 @@
           <h2 data-aos="fade-up">Disfruta tu comida en<br>Nuestro restaurant</h2>
           <p data-aos="fade-up" data-aos-delay="100">Haciendo click en el botón rojo de abajo puedes ver el menú y hacer tu pedido, adelante!</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="{% url 'cliente:tienda' %}" class="btn-book-a-table">Iniciar pedido</a>
+            <a href="{% url 'cliente:pedir' %}" class="btn-book-a-table">Iniciar pedido</a>
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">

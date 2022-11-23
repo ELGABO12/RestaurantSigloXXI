@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.mantenedor',
     'apps.usuario',
     'apps.cliente',
+    'apps.carrito',
     
     # PACKAGES
     'crispy_forms',
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.carrito.context_processor.total_carrito',
             ],
         },
     },
