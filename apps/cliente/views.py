@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from apps.mantenedor.models import Receta
@@ -44,10 +45,11 @@ def limpiar_carrito(request):
 
 
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
-# --------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------
+
 
 class InicioCliente(TemplateView):
     template_name = 'cliente/area_cliente/index_cliente.html'
@@ -61,9 +63,12 @@ class Menu(TemplateView):
 class Tienda(TemplateView):
     template_name = 'cliente/area_cliente/tienda.html'
 
+
+
 # -------------------------------------------------------
 # -------------------------------------------------------
 # -------------------------------------------------------
+
 
 
 class ListadoReserva(View): # Listado de Reservas
@@ -103,6 +108,7 @@ class EliminarReserva(DeleteView): #Eliminar Reserva
 # -------------------------------------------------------
 
 
+
 class ListadoBoleta(View): # Listado de Boletas
     model = Boleta
     form_class = BoletaForm
@@ -127,3 +133,14 @@ class CrearBoleta(CreateView): # Crear Reserva
     form_class = BoletaForm
     template_name = 'cliente/boleta/crear_boleta.html'
     success_url = reverse_lazy('cliente:listado_boletas')
+
+
+
+# -------------------------------------------------------
+# -------------------------------------------------------
+# -------------------------------------------------------
+
+
+
+def hola(request):
+    return render(request, template_name= 'cliente/paypal/paypal.html')
