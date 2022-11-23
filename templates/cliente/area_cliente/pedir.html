@@ -1,0 +1,57 @@
+{% extends 'cliente/area_cliente/index_cliente.html' %}
+{% load staticfiles %}
+<html>
+    <body>
+{% block nav %}
+<a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
+    <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
+</a>
+
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a href="{% url 'cliente:pedir' %}">Recetas</a></li>
+        <li><a href="{% url 'cliente:inicio_cliente' %}">Volver al inicio</a></li>
+    </ul>
+</nav><!-- .navbar -->
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="section-header">
+    <br>
+    <h2>Nuestros platos</h2>
+    <p>Escoge el plato<span> Que quieres pedir</span></p>
+  </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                {% for receta in recetas %}
+                    <div class="col-md-3 col-sm-12 col-lg-3">
+                        <div class="card" style="width:100%;">
+                            <img src="{{ receta.image.url }}" style="width:100%;" class="card-img-top" alt="{{ receta.nombre_receta }}">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ receta.nombre_receta }}</h5>
+                                <p class="card-text text-center">${{ receta.precio_receta }}</p>
+                                <p class="card-text text-center">{{ receta.tiempo_preparacion }} minutos de preparación</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="{% url 'cliente:Add' receta.id %}" class="btn btn-success">Agregar a mi pedido</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-3">
+            {% include "cliente/area_cliente/carrito.html" %}
+        </div>
+    </div>
+<br>
+{% endblock %}
+
+    <script src="{% static 'assets-3/js/jquery.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'assets-3/js/bootstrap.min.js' %}" charset="utf-8"></script>
+  </body>
+</html>

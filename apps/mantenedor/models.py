@@ -58,7 +58,7 @@ class Mesa(models.Model):
 class Receta(models.Model):
     id = models.AutoField(primary_key = True)
     nombre_receta = models.CharField('Nombre de la receta', max_length = 255, blank = False, null = False)
-    precio_receta = models.DecimalField('Precio de la receta', max_digits=10, decimal_places=2)
+    precio_receta = models.FloatField('Precio de la receta', max_length=10)
     image = models.ImageField(upload_to = "recetas", blank=True, null=False)
     tiempo_preparacion = models.CharField('Tiempo de preparación', max_length=2, blank = False, null = True)
     

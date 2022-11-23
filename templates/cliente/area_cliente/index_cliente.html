@@ -42,7 +42,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
+{% block nav %}
       <a href="{% url 'cliente:inicio_cliente' %}" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
@@ -53,19 +53,22 @@
         <ul>
           <li><a href="{% url 'cliente:inicio_cliente' %}">Inicio</a></li>
           <li><a href="{% url 'cliente:inicio_cliente' %}#acerca">Acerca de nosostros</a></li>
+          <li><a href="{% url 'cliente:inicio_cliente' %}#testimonials">Opiniones</a></li>
           <li><a href="{% url 'cliente:inicio_cliente' %}#galeria">Galeria</a></li>
           <li><a href="{% url 'cliente:inicio_cliente' %}#contact">Contacto</a></li>
           <li><a href="{% url 'cliente:menu' %}">Menú</a></li>
         </ul>
       </nav><!-- .navbar -->
+
       <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
             </div>
             {% if user.is_authenticated %}
             <div class="user-area dropdown float-right">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido {{ user.username }}</h3>
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido al área cliente {{ user.username }}</h3>
+                <a href="{% url 'index' %}">
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Ir a área administrativa</h3>
                 </a>
             {% endif %}
                 </div>
@@ -73,14 +76,15 @@
 
         </div>
     </div>
-      <a class="btn-book-a-table" href="">Iniciar pedido</a>
+      <a class="btn-book-a-table" href="{% url 'cliente:pedir' %}">Iniciar pedido</a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
+{% endblock %}
   </header><!-- End Header -->
 
-{% block content %}
+  {% block content %}
 
   <!-- ======= Hero Section ======= -->
   <section id="inicio" class="hero d-flex align-items-center section-bg">
@@ -90,7 +94,7 @@
           <h2 data-aos="fade-up">Disfruta tu comida en<br>Nuestro restaurant</h2>
           <p data-aos="fade-up" data-aos-delay="100">Haciendo click en el botón rojo de abajo puedes ver el menú y hacer tu pedido, adelante!</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Iniciar pedido</a>
+            <a href="{% url 'cliente:pedir' %}" class="btn-book-a-table">Iniciar pedido</a>
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
@@ -117,7 +121,7 @@
           background-repeat: no-repeat; background-position: center; background-size:cover;" data-aos="fade-up" data-aos-delay="150">
           <br><br><br>
             <div class="call-us position-absolute">
-              <h4>Haz tu pedido</h4>
+              <h4>Haz tu reserva</h4>
               <p>+569 1234 5678</p>
             </div>
           </div>
@@ -149,7 +153,7 @@
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
-
+<br>
         <div class="section-header">
           <h2>Opiniones</h2>
           <p>¿Que dicen <span>de nosotros?</span></p>
@@ -165,18 +169,21 @@
                     <div class="testimonial-content">
                       <p>
                         <i class="bi bi-quote quote-icon-left"></i>
-                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                        <i class="bi bi-quote quote-icon-right"></i>
+                        La comida es deliciosa! Es toda una experiencia que 
+                        pudimos disfrutar en famila. La calidad de los ingredientes 
+                        y el sabor es inigualable. La atención es divina y el 
+                        chef compartió la historia de cada plato. 
+                        Delicioso y totalmente recomendado.<i class="bi bi-quote quote-icon-right"></i>
                       </p>
                       <h3>Saul Goodman</h3>
-                      <h4>Ceo &amp; Founder</h4>
+                      <h4>Cliente</h4>
                       <div class="stars">
                         <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <img src="{% static 'assets-3/img/testimonials/testimonials-1.jpg' %}" class="img-fluid testimonial-img" alt="">
+                    <img src="{% static 'assets-3/img/testimonials/testimonials-1.webp' %}" class="img-fluid testimonial-img" alt="">
                   </div>
                 </div>
               </div>
@@ -189,11 +196,13 @@
                     <div class="testimonial-content">
                       <p>
                         <i class="bi bi-quote quote-icon-left"></i>
-                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                        <i class="bi bi-quote quote-icon-right"></i>
+                        Lo recomiendo al 100%, buen servicio, en un futuro repetiré 
+                        pues me ha dado ganas de probar otros platos de la carta.Gran equipo de profesionales. 
+                        Han estado atentos y han sido correctos. Es un sitio perfecto para quedar con amigos, 
+                        gracias por tan estupenda atención.<i class="bi bi-quote quote-icon-right"></i>
                       </p>
-                      <h3>Sara Wilsson</h3>
-                      <h4>Designer</h4>
+                      <h3>Paula Fuentes</h3>
+                      <h4>Clienta</h4>
                       <div class="stars">
                         <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                       </div>
@@ -213,11 +222,11 @@
                     <div class="testimonial-content">
                       <p>
                         <i class="bi bi-quote quote-icon-left"></i>
-                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                        <i class="bi bi-quote quote-icon-right"></i>
+                        Me gusto mucho la comida fue espectacular, el trato recibido 
+                        tambien fue muy bueno, lo recomiendo si estas por la zona.<i class="bi bi-quote quote-icon-right"></i>
                       </p>
-                      <h3>Jena Karlis</h3>
-                      <h4>Store Owner</h4>
+                      <h3>René Puente</h3>
+                      <h4>Cliente frecuente</h4>
                       <div class="stars">
                         <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                       </div>
@@ -237,11 +246,12 @@
                     <div class="testimonial-content">
                       <p>
                         <i class="bi bi-quote quote-icon-left"></i>
-                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                        <i class="bi bi-quote quote-icon-right"></i>
+                        Nuestra visita a este fabuloso restaurante fue extraordinaria! 
+                        El servicio y la comida eran excepcionales y la 
+                        presentación de los platos era hermosa!<i class="bi bi-quote quote-icon-right"></i>
                       </p>
-                      <h3>John Larson</h3>
-                      <h4>Entrepreneur</h4>
+                      <h3>Juan López</h3>
+                      <h4>Cliente</h4>
                       <div class="stars">
                         <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                       </div>
@@ -431,7 +441,6 @@
   <!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets-3/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
