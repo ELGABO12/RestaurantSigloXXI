@@ -81,7 +81,6 @@ section {
   color: #7f7f90;
   text-transform: uppercase;
   font-family: var(--font-default);
-  margin-left: 50px;
 }
 
 .section-header p {
@@ -89,7 +88,6 @@ section {
   font-size: 48px;
   font-weight: 400;
   font-family: var(--font-primary);
-  margin-left: 50px;
 }
 
 .section-header p span {
