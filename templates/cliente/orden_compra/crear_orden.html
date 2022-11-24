@@ -4,7 +4,7 @@
 {% block nav %}
 <header id="header" class="header fixed-top d-flex align-items-center">
 <div class="container d-flex align-items-center justify-content-between">
-<a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+<a href="{% url 'cliente:inicio_cliente' %}" class="logo d-flex align-items-center me-auto me-lg-0">
     <!-- Uncomment the line below if you also wish to use an image logo -->
     <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
     <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
@@ -32,51 +32,70 @@
     </div>
 </div>
 <br>
-<tbody>
-    <div class="table-stats order-table ov-h">
-        <table id="tabla_libros" class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                </tr>
-            </thead>
-    {% if request.session.cart.items %}
-    {% for key, value in request.session.cart.items %}
-        <tr>
-            <td>{{ value.nombre_receta }}</td>
-            <td>$ {{ value.precio_receta }} CLP</td>
-            <td>{{ value.quantity }}</td>
-        </tr>
-    {% endfor %}
-    {% else %}
-    <tr>
-        <td colspan="3">
-            <div class="alert alert-danger text-center">Sin productos</div>
-        </td>
-    </tr>
-    {% endif %}
-    <tr>
-        <th scope="row">Total:</th>
-        <td colspan="2">$ {{ total_carrito }} CLP</td>
-    </tr>
-        </table>
-    </div>
-</tbody>
-<div class="card">
-    <div class="card-header">
-        <strong class="card-title">Información del cliente</strong>
-    </div>
-    <div class="card-body">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="">
-                <button class="btn btn-primary" type="submit">Ir a Pagar</button>
+    
+<section>
+    <div class="table-stats order-table ov-h" >
+            <div class="row">
+                <div class="col-mb-7">
+                    <div class="container d-flex align-items-center justify-content-between">
+                            <table id="tabla_libros" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                        {% if request.session.cart.items %}
+                        {% for key, value in request.session.cart.items %}
+                            <tr>
+                                <td>{{ value.nombre_receta }}</td>
+                                <td>$ {{ value.precio_receta }} CLP</td>
+                                <td>{{ value.quantity }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert alert-danger text-center">Sin productos</div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <th scope="row">Total:</th>
+                            <td colspan="2">$ {{ total_carrito }} CLP</td>
+                        </tr>
+                            </table>
+                    </div>
+                    
+                </div>
             </div>
-        </form>
     </div>
-</div>
+
+    
+    <div class="row">
+        <div class="col-mb-7">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Información del cliente</strong>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="">
+                                <button class="btn btn-primary" type="submit">Ir a Pagar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <br>
 {% endblock %}
