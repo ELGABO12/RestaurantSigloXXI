@@ -3,8 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from apps.mantenedor.models import Receta
-from apps.cliente.models import Reserva, Boleta
-from apps.cliente.forms import ReservaForm, BoletaForm
+from apps.cliente.models import Reserva, Boleta, OrdenItem, OrdenCompra
+from apps.cliente.forms import ReservaForm, BoletaForm, OrderCreateForm
 from apps.carrito.cart import Cart
 
 # Create your views here.
@@ -42,6 +42,20 @@ def limpiar_carrito(request):
     cart = Cart(request)
     cart.clear()
     return redirect("cliente:pedir")
+
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+
+
+class CrearOrden(CreateView): # Crear Reserva
+    model = OrdenCompra
+    form_class = OrderCreateForm
+    template_name = 'cliente/orden_compra/crear_orden.html'
+    success_url = reverse_lazy('cliente:crear_orden')
 
 
 

@@ -14,6 +14,7 @@ urlpatterns = [
     path('restar/<int:receta_id>/', restar_producto, name ='Sub'),
     path('limpiar/', limpiar_carrito, name ='CLS'),
     
+    path('crear_orden/', CrearOrden.as_view(), name ='crear_orden'),
     
     path('listar_reservas/', login_required(ListadoReserva.as_view()), name = 'listado_reservas'),
     path('crear_reserva/', login_required(CrearReserva.as_view()), name = 'crear_reserva'),

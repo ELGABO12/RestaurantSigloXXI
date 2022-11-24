@@ -1,6 +1,6 @@
 from socket import fromshare
 from django import forms
-from .models import Reserva,Boleta
+from .models import Reserva,Boleta,OrdenCompra
 
 class ReservaForm(forms.ModelForm):
     class Meta:
@@ -94,6 +94,37 @@ class BoletaForm(forms.ModelForm):
                 attrs = {
                     'class': 'form-control',
                     'placeholder': ' Seleccione el estado de la boleta'
+                }
+            ),
+        }
+        
+        
+class OrderCreateForm(forms.ModelForm):
+    class Meta:
+        model = OrdenCompra
+        fields = ['nombre_cliente', 'apellido_cliente', 'email_cliente',]
+        labels = {
+            'nombre_cliente': 'Nombre del cliente',
+            'apellido_cliente': 'Apellido del cliente',
+            'email_cliente': 'Email del cliente',
+        }
+        widgets = {
+            'nombre_cliente': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su nombre'
+                }
+            ),
+            'apellido_cliente': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su apellido'
+                }
+            ),
+            'email_cliente': forms.EmailInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': ' Ingrese su email'
                 }
             ),
         }

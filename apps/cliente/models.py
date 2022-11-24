@@ -1,6 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from apps.mantenedor.models import Mesa
+from apps.mantenedor.models import Mesa, Receta
 
 
 # Create your models here.
@@ -48,3 +48,36 @@ class Boleta(models.Model):
 
     def __str__(self):
         return self.total_a_pagar
+    
+    
+
+class OrdenCompra(models.Model):
+    id = models.AutoField(primary_key = True)
+    nombre_cliente = models.CharField('Nombre', max_length = 50, blank = False, null = True)
+    apellido_cliente = models.CharField('Apellido', max_length = 50, blank = False, null = True)
+    email_cliente = models.EmailField(max_length = 255, blank = False, null = True)
+    fecha_orden = models.DateTimeField(auto_now_add=True)
+    ha_pagado = models.BooleanField(default=True)
+    
+    class Meta:
+        verbose_name = 'OrdenCompra'
+        verbose_name_plural = 'OrdenCompras'
+        ordering = ('-fecha_orden',)
+        
+    def __str__(self):
+        return 'Orden de Compra {}'.format(self.id)
+    
+    
+
+class OrdenItem(models.Model):
+    id = models.AutoField(primary_key = True)
+    orden = models.ForeignKey(OrdenCompra, on_delete=models.SET_NULL,related_name='items', null = True)
+    receta = models.ForeignKey(Receta, on_delete=models.SET_NULL, related_name='orden_items', null = True)
+    precio_receta = models.FloatField('Precio de la receta', max_length=10)
+    cantidad = models.PositiveIntegerField('Cantidad', default=1, null = False)
+
+    def __str__(self):
+        return '{}'.format(self.id)
+
+    def get_cost(self):
+        return self.precio_receta * self.cantidad

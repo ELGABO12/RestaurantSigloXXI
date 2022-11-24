@@ -1,0 +1,68 @@
+{% extends 'cliente/area_cliente/index_cliente.html' %}
+{% load staticfiles %}
+
+{% block nav %}
+<header id="header" class="header fixed-top d-flex align-items-center">
+<div class="container d-flex align-items-center justify-content-between">
+<a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
+    <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
+</a>
+
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a href="{% url 'cliente:pedir' %}">Volver a recetas</a></li>
+    </ul>
+</nav><!-- .navbar -->
+
+<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+</div>
+</header>
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="container" data-aos="fade-up">
+    <div class="section-header">
+        <br>
+        <h2>Checkout</h2>
+        <p>Este es<span> tu pedido</span></p>
+    </div>
+</div>
+<br>
+<tbody>
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+    {% if request.session.cart.items %}
+    {% for key, value in request.session.cart.items %}
+        <tr>
+            <td>{{ value.nombre_receta }}</td>
+            <td>$ {{ value.precio_receta }} CLP</td>
+            <td>{{ value.quantity }}</td>
+        </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td colspan="3">
+            <div class="alert alert-danger text-center">Sin productos</div>
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+        <th scope="row">Total:</th>
+        <td colspan="2">$ {{ total_carrito }} CLP</td>
+    </tr>
+        </table>
+    </div>
+</tbody>
+<br><br>
+{% endblock %}

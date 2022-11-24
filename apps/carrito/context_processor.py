@@ -1,6 +1,6 @@
 def total_carrito(request):
     total = 0.0 
-    if request.user.is_authenticated:
+    if not request.user.is_authenticated or request.user.is_authenticated:
 
         if 'cart' in request.session:
             for key,value in request.session['cart'].items():
