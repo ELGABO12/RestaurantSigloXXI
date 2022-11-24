@@ -14,7 +14,10 @@ urlpatterns = [
     path('restar/<int:receta_id>/', restar_producto, name ='Sub'),
     path('limpiar/', limpiar_carrito, name ='CLS'),
     
+    
     path('crear_orden/', CrearOrden.as_view(), name ='crear_orden'),
+    path('paypal/', pago_paypal, name ='paypal'),
+    
     
     path('listar_reservas/', login_required(ListadoReserva.as_view()), name = 'listado_reservas'),
     path('crear_reserva/', login_required(CrearReserva.as_view()), name = 'crear_reserva'),
@@ -23,9 +26,6 @@ urlpatterns = [
     
     path('emitir_boleta/', login_required(ListadoBoleta.as_view()), name = 'listado_boletas'),
     path('crear_boleta/', login_required(CrearBoleta.as_view()), name = 'crear_boleta'),
-    
-    path('paypal/', hola, name ='paypal'),
-
 ]
 
 app_name = 'cliente'

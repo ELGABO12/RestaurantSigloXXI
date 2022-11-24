@@ -64,5 +64,19 @@
         </table>
     </div>
 </tbody>
-<br><br>
+<div class="card">
+    <div class="card-header">
+        <strong class="card-title">Información del cliente</strong>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="">
+                <button class="btn btn-primary" type="submit">Ir a Pagar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
 {% endblock %}

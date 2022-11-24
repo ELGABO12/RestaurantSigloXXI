@@ -55,7 +55,12 @@ class CrearOrden(CreateView): # Crear Reserva
     model = OrdenCompra
     form_class = OrderCreateForm
     template_name = 'cliente/orden_compra/crear_orden.html'
-    success_url = reverse_lazy('cliente:crear_orden')
+    success_url = reverse_lazy('cliente:paypal')
+
+
+
+def pago_paypal(request):
+    return render(request, template_name= 'cliente/paypal/paypal.html')
 
 
 
@@ -153,8 +158,3 @@ class CrearBoleta(CreateView): # Crear Reserva
 # -------------------------------------------------------
 # -------------------------------------------------------
 # -------------------------------------------------------
-
-
-
-def hola(request):
-    return render(request, template_name= 'cliente/paypal/paypal.html')
