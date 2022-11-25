@@ -17,6 +17,7 @@ urlpatterns = [
     
     path('crear_orden/', CrearOrden.as_view(), name ='crear_orden'),
     path('paypal/', pago_paypal, name ='paypal'),
+    path('gracias/', Gracias.as_view(), name ='gracias'),
     
     
     path('listar_reservas/', login_required(ListadoReserva.as_view()), name = 'listado_reservas'),

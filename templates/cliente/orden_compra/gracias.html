@@ -1,6 +1,33 @@
 {% extends 'cliente/area_cliente/index_cliente.html' %}
 {% load staticfiles %}
 
-{% block content %}
+{% block nav %}
+<header id="header" class="header fixed-top d-flex align-items-center">
+<div class="container d-flex align-items-center justify-content-between">
+<a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="{% static 'assets-3/img/logo.png' %}" alt=""> -->
+    <h1><img src="{% static 'images/logo2.png' %}" alt="logo"></h1>
+</a>
 
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a href="{% url 'cliente:inicio_cliente' %}">Volver a Inicio</a></li>
+    </ul>
+</nav><!-- .navbar -->
+
+<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+</div>
+</header>
+{% endblock %}
+
+{% block content %}
+<br><br><br><br>
+<section>
+    <div class="text-center alert alert-success" role="alert">
+        Gracias por su compra, vuelva pronto!
+    </div>
+</section>
+<br><br>
 {% endblock %}

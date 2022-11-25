@@ -64,6 +64,11 @@ def pago_paypal(request):
 
 
 
+class Gracias(TemplateView):
+    template_name = 'cliente/orden_compra/gracias.html'
+
+
+
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
@@ -78,9 +83,6 @@ class CodigoReserva(TemplateView):
     
 class Menu(TemplateView):
     template_name = 'cliente/area_cliente/menu.html'
-
-class Tienda(TemplateView):
-    template_name = 'cliente/area_cliente/tienda.html'
 
 
 

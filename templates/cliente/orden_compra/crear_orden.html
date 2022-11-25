@@ -31,16 +31,15 @@
         <p>Este es<span> tu pedido</span></p>
     </div>
 </div>
-<br>
     
 <section>
     <div class="table-stats order-table ov-h" >
             <div class="row">
                 <div class="col-mb-7">
                     <div class="container d-flex align-items-center justify-content-between">
-                            <table id="tabla_libros" class="table">
+                            <table class="table">
                                 <thead>
-                                    <tr>
+                                    <tr class="table-active">
                                         <th>Nombre</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
@@ -61,7 +60,7 @@
                             </td>
                         </tr>
                         {% endif %}
-                        <tr>
+                        <tr class="table-secondary">
                             <th scope="row">Total:</th>
                             <td colspan="2">$ {{ total_carrito }} CLP</td>
                         </tr>

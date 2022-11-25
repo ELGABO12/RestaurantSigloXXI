@@ -49,7 +49,7 @@
             // const element = document.getElementById('paypal-button-container');
             // element.innerHTML = '<h3>Thank you for your payment!</h3>';
             // Or go to another URL:  actions.redirect('thank_you.html');
-            window.location.href = '{% url 'cliente:inicio_cliente' %}';
+            window.location.href = '{% url 'cliente:gracias' %}';
           });
         }
       }).render('#paypal-button-container');
