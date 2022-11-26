@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView,TemplateView
 from apps.usuario.models import Usuario
+from django.contrib.auth.models import Group
 from .forms import FormularioLogin, FormularioUsuario
 from apps.usuario.mixins import LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin
 
@@ -69,7 +70,6 @@ class RegistrarUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosM
     model = Usuario
     form_class = FormularioUsuario
     template_name = 'usuarios/crear_usuario.html'
-    # success_url = reverse_lazy('usuarios:listar_usuarios')
     
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -82,6 +82,10 @@ class RegistrarUsuario(LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosM
             )
             nuevo_usuario.set_password(form.cleaned_data.get('password1'))
             nuevo_usuario.save()
+            groups = form.cleaned_data.get('groups')
+            for group in groups:
+                grupo = Group.objects.get(pk=group.id)  # (pk=group.id) si son objetos
+                grupo.user_set.add(nuevo_usuario)
             return redirect('usuarios:listar_usuarios')
         else:
             return render(request, self.template_name,{'form':form})

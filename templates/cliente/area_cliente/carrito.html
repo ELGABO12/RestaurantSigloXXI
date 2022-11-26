@@ -41,8 +41,6 @@
     <div class="col-6"><a href="{% url 'cliente:CLS' %}" class="btn btn-danger">Limpiar</a></div>
     
     {% if request.session.cart.items %}
-    {% for key, value in request.session.cart.items %}
         <div class="col-6"><a href="{% url 'cliente:crear_orden' %}" class="btn btn-success">Pedir</a></div>
-    {% endfor %}
     {% endif %}
 </div>
