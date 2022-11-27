@@ -21,28 +21,28 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre de la receta</th>
-                    <th>Precio de la receta</th>
-                    <th>Imagen</th>
-                    <th>Tiempo de preparación aprox.</th>
-                    <th>Opciones</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre de la receta</th>
+                    <th class="text-center">Precio de la receta</th>
+                    <th class="text-center">Imagen</th>
+                    <th class="text-center">Tiempo de preparación aprox.</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for receta in recetas %}
                     <tr>
-                        <td>{{ receta.id }}</td>
-                        <td>{{ receta.nombre_receta }}</td>
-                        <td>$ {{ receta.precio_receta }}</td>
-                        <td>
+                        <td class="text-center" style="text-transform:none">{{ receta.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ receta.nombre_receta }}</td>
+                        <td class="text-center" style="text-transform:none">$ {{ receta.precio_receta }}</td>
+                        <td class="text-center" style="text-transform:none">
                             {% if receta.image %}
                                 <img src="{{receta.image.url}}" style="width: 120px;">
                             {% else %}
                                 <img src="{% static 'img/noimage.jpg' %}" style="width: 120px;">
                             {% endif %}
                         </td>
-                        <td>{{ receta.tiempo_preparacion }} Minutos</td>
+                        <td class="text-center" style="text-transform:none">{{ receta.tiempo_preparacion }} Minutos</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_receta' receta.id %}')" class="btn btn-primary">Editar

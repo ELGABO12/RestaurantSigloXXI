@@ -1,13 +1,11 @@
 {% extends 'index.html' %}
+{% load staticfiles %}
 
 {% block titulo1 %}
-<div>
-    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'cliente:crear_boleta' %}')">Emitir Boleta</button>
-</div>
     <div class="card-header">
         <div class="row">
             <div class="col-md-8">
-                <strong class="card-title">Boletas emitidas</strong>
+                <strong class="card-title">Listado de Boletas emitidas</strong>
             </div>
         </div>
     </div>
@@ -15,26 +13,38 @@
 
 
 {% block listado %}
-    {% if boletas %}
+    {% if ordenes %}
     <div class="table-stats order-table ov-h">
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>Código de boleta</th>
-                    <th>Nombre del cliente</th>
-                    <th>Total a pagar</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
+                    <th class="text-center">Código boleta</th>
+                    <th class="text-center">Nombre del cliente</th>
+                    <th class="text-center">Apellido del cliente</th>
+                    <th class="text-center">Email del cliente</th>
+                    <th class="text-center">Fecha de orden</th>
+                    <th class="text-center">Precio total</th>
+                    <th class="text-center">Pagado</th>
                 </tr>
             </thead>
             <tbody>
-                {% for boleta in boletas %}
+                {% for orden in ordenes %}
                     <tr>
-                        <td>{{ boleta.id }}</td>
-                        <td>{{ boleta.nombre_apellido_cliente }}</td>
-                        <td>$ {{ boleta.total_a_pagar }}</td>
-                        <td>{{ boleta.fecha_de_pago }}</td>
-                        <td>{{ boleta.estado }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.nombre_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.apellido_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.email_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.fecha_orden }}</td>
+                        <td style="text-transform:none">$ {{ orden.get_total_cost }} CLP</td>
+                        <td class="text-center">
+                            {% if orden.ha_pagado is True %}
+                                <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
+                            {% else %}
+                            <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
+                            {% endif %}
+                        </td>
+
+                        
                         <tr class="spacer"></tr>
                         <tr class="tr-shadow">
                     </tr>
@@ -43,28 +53,8 @@
         </table>
     </div>
     {% else %}
-        <h1>No existen boletas registradas</h1>
+        <h1>No hay boletas</h1>
     {% endif %}
 
-<div class="modal fade" id="creacion" role="dialog"></div>
-<div class="modal fade" id="edicion" role="dialog"></div>
 
 {% endblock listado %}
-
-{% block extrajs %}
-
-<script type="text/javascript">
-    var $ = jQuery.noConflict();
-    function abrir_modal_edicion(url){
-        $('#edicion').load(url, function (){
-            $(this).modal('show');
-        });
-    }
-    function abrir_modal_creacion(url){
-        $('#creacion').load(url,function(){
-            $(this).modal('show');
-        });
-    }
-</script>
-
-{% endblock extrajs %}

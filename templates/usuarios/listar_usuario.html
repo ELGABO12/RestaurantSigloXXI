@@ -20,24 +20,24 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre de Usuario</th>
-                    <th>Email</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Grupo</th>
-                    <th>Opciones</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre de Usuario</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Nombres</th>
+                    <th class="text-center">Apellidos</th>
+                    <th class="text-center">Grupo</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for usuario in object_list %}
                     <tr>
-                        <td>{{ usuario.id }}</td>
-                        <td>{{ usuario.username }}</td>
-                        <td>{{ usuario.email }}</td>
-                        <td>{{ usuario.nombres }}</td>
-                        <td>{{ usuario.apellidos }}</td>
-                        <td>{% for group in usuario.groups.all %}{{group}}{% if not forloop.last %},{% endif %}{% endfor %}</td>
+                        <td class="text-center" style="text-transform:none">{{ usuario.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ usuario.username }}</td>
+                        <td class="text-center" style="text-transform:none">{{ usuario.email }}</td>
+                        <td class="text-center" style="text-transform:none">{{ usuario.nombres }}</td>
+                        <td class="text-center" style="text-transform:none">{{ usuario.apellidos }}</td>
+                        <td class="text-center" style="text-transform:none">{% for group in usuario.groups.all %}{{group}}{% if not forloop.last %},{% endif %}{% endfor %}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'usuarios:editar_usuario' usuario.id %}')" class="btn btn-primary">Editar

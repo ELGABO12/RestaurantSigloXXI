@@ -20,29 +20,29 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>Código reserva</th>
-                    <th>Email</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Teléfono</th>
-                    <th>Fecha reserva</th>
-                    <th>Hora reserva</th>
-                    <th>Descripción mesa</th>
-                    <th>Opciones</th>
+                    <th class="text-center">Código reserva</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Apellido</th>
+                    <th class="text-center">Teléfono</th>
+                    <th class="text-center">Fecha reserva</th>
+                    <th class="text-center">Hora reserva</th>
+                    <th class="text-center">Descripción mesa</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reserva in reservas %}
                     <tr>
-                        <td>{{ reserva.cod_reserva }}</td>
-                        <td>{{ reserva.email_cliente }}</td>
-                        <td>{{ reserva.nombre_cliente }}</td>
-                        <td>{{ reserva.apellido_cliente }}</td>
-                        <td>{{ reserva.telefono_cliente }}</td>
-                        <td>{{ reserva.fecha_reserva }}</td>
-                        <td>{{ reserva.hora_reserva }}</td>
-                        <td>Mesa {{ reserva.numero_mesa }}</td>
-                        <td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.cod_reserva }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.email_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.nombre_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.apellido_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.telefono_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.fecha_reserva }}</td>
+                        <td class="text-center" style="text-transform:none">{{ reserva.hora_reserva }}</td>
+                        <td class="text-center" style="text-transform:none">Mesa {{ reserva.numero_mesa }}</td>
+                        <td class="text-center" style="text-transform:none">
                             <div class="table-data-feature"> 
                                 <a href="{% url 'cliente:eliminar_reserva' reserva.cod_reserva %}"><button class="btn btn-danger">Eliminar
                                 </button></a>

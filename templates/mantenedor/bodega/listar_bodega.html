@@ -20,20 +20,20 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Proveedor Encargado</th>
-                    <th>Nombre del Producto</th>
-                    <th>Cantidad</th>
-                    <th>Opciones</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Proveedor Encargado</th>
+                    <th class="text-center">Nombre del Producto</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for bodega in bodegas %}
                     <tr>
-                        <td>{{ bodega.id }}</td>
-                        <td>{{ bodega.proveedor }}</td>
-                        <td>{{ bodega.productos }}</td>
-                        <td>{{ bodega.cantidad }}</td>
+                        <td class="text-center" style="text-transform:none">{{ bodega.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ bodega.proveedor }}</td>
+                        <td class="text-center" style="text-transform:none">{{ bodega.productos }}</td>
+                        <td class="text-center" style="text-transform:none">{{ bodega.cantidad }}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_bodega' bodega.id %}')" class="btn btn-primary">Editar

@@ -18,7 +18,6 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th class="text-center">ID</th>
                     <th class="text-center">Nombre del cliente</th>
                     <th class="text-center">Apellido del cliente</th>
                     <th class="text-center">Email del cliente</th>
@@ -32,12 +31,11 @@
             <tbody>
                 {% for orden in ordenes %}
                     <tr>
-                        <td class="text-center">{{ orden.id }}</td>
-                        <td class="text-center">{{ orden.nombre_cliente }}</td>
-                        <td class="text-center">{{ orden.apellido_cliente }}</td>
-                        <td class="text-center">{{ orden.email_cliente }}</td>
-                        <td class="text-center">{{ orden.fecha_orden }}</td>
-                        <td>
+                        <td class="text-center" style="text-transform:none">{{ orden.nombre_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.apellido_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.email_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.fecha_orden }}</td>
+                        <td class="text-center">
                             {% if orden.ha_pagado is True %}
                                 <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
                             {% else %}
@@ -47,11 +45,11 @@
 
                         <td>
                         {% for item in orden.items.all %}
-                            <li>{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
+                            <li style="text-transform:none">{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
                         {% endfor %}
                         </td>
-                        <td>${{ orden.get_total_cost }} CLP</td>
-                        <td><button class="btn btn-success">Marcar como listo</button></td>
+                        <td style="text-transform:none">$ {{ orden.get_total_cost }} CLP</td>
+                        <td><button class="btn btn-success">Envar pedido</button></td>
                         
                         <tr class="spacer"></tr>
                         <tr class="tr-shadow">

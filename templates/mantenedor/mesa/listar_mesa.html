@@ -20,18 +20,18 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>Número de mesa</th>
-                    <th>Descripción mesa</th>
-                    <th>Cantidad de Personas</th>
-                    <th>Opciones</th>
+                    <th class="text-center">Número de mesa</th>
+                    <th class="text-center">Descripción mesa</th>
+                    <th class="text-center">Cantidad de Personas</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for mesa in mesas %}
                     <tr>
-                        <td>Mesa N°{{ mesa.numero_mesa }}</td>
-                        <td>{{ mesa.descripcion_mesa }}</td>
-                        <td>{{ mesa.cantidad_personas }} Personas</td>
+                        <td class="text-center" style="text-transform:none">Mesa N°{{ mesa.numero_mesa }}</td>
+                        <td class="text-center" style="text-transform:none">{{ mesa.descripcion_mesa }}</td>
+                        <td class="text-center" style="text-transform:none">{{ mesa.cantidad_personas }} Personas</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_mesa' mesa.id %}')" class="btn btn-primary">Editar

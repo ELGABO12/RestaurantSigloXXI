@@ -20,20 +20,20 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre proveedor</th>
-                    <th>Correo proveedor</th>
-                    <th>Teléfono proveedor</th>
-                    <th>Opciones</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre proveedor</th>
+                    <th class="text-center">Correo proveedor</th>
+                    <th class="text-center">Teléfono proveedor</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for proveedor in proveedores %}
                     <tr>
-                        <td>{{ proveedor.id }}</td>
-                        <td>{{ proveedor.nombre_proveedor }}</td>
-                        <td>{{ proveedor.correo_proveedor }}</td>
-                        <td>{{ proveedor.telefono_proveedor }}</td>
+                        <td class="text-center" style="text-transform:none">{{ proveedor.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ proveedor.nombre_proveedor }}</td>
+                        <td class="text-center" style="text-transform:none">{{ proveedor.correo_proveedor }}</td>
+                        <td class="text-center" style="text-transform:none">{{ proveedor.telefono_proveedor }}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_proveedor' proveedor.id %}')" class="btn btn-primary">Editar

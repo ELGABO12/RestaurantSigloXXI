@@ -153,8 +153,8 @@ class EliminarReserva(DeleteView): #Eliminar Reserva
 
 
 class ListadoBoleta(View): # Listado de Boletas
-    model = Boleta
-    form_class = BoletaForm
+    model = OrdenCompra
+    form_class = OrderCreateForm
     template_name = 'cliente/boleta/emitir_boleta.html'  
     
     def get_queryset(self):
@@ -162,8 +162,8 @@ class ListadoBoleta(View): # Listado de Boletas
     
     def get_context_data(self,**kwargs):
         contexto = {}
-        contexto['boletas'] = self.get_queryset()
-        contexto['form'] = self.form_class
+        contexto['ordenes'] = self.get_queryset()
+        contexto['form'] = self.form_class()
         return contexto
     
     def get(self,request,*args,**kwargs):

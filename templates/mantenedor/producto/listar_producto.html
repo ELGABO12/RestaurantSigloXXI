@@ -21,22 +21,22 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre producto</th>
-                    <th>Cantidad</th>
-                    <th>Proveedor</th>
-                    <th>Descripción</th>
-                    <th>Opciones</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre producto</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Proveedor</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for producto in productos %}
                     <tr>
-                        <td>{{ producto.id }}</td>
-                        <td>{{ producto.nombre_producto }}</td>
-                        <td>{{ producto.cantidad }}</td>
-                        <td>{{ producto.proveedor }}</td>
-                        <td>{{ producto.descripcion }}</td>
+                        <td class="text-center" style="text-transform:none">{{ producto.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ producto.nombre_producto }}</td>
+                        <td class="text-center" style="text-transform:none">{{ producto.cantidad }}</td>
+                        <td class="text-center" style="text-transform:none">{{ producto.proveedor }}</td>
+                        <td class="text-center" style="text-transform:none">{{ producto.descripcion }}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button onclick="abrir_modal_edicion('{% url 'mantenedor:editar_producto' producto.id %}')" class="btn btn-primary">Editar
