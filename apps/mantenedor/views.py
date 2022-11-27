@@ -255,8 +255,8 @@ class ListadoOrden(View): # Listado de Ordenes de compra
         return render(request,self.template_name,self.get_context_data())
     
 
-class DetalleOrden(View):
-    model = OrdenCompra
+class DetalleOrden(View): # Listado de Items de orden
+    model = OrdenItem
     template_name = 'mantenedor/orden/detalle_orden.html'  
     
     def get_queryset(self):
@@ -264,12 +264,16 @@ class DetalleOrden(View):
     
     def get_context_data(self,**kwargs):
         contexto = {}
-        contexto['ordenes'] = self.get_queryset()
+        contexto['detalles'] = self.get_queryset()
         contexto['form'] = self.form_class()
         return contexto
     
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name,self.get_context_data())
+    
+
+class DetOrden(TemplateView):
+    template_name = 'mantenedor/orden/detalle_orden.html'
 
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------

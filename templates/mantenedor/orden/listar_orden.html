@@ -25,9 +25,8 @@
                     <th class="text-center">Fecha de orden</th>
                     <th class="text-center">Pagado</th>
                     <th class="text-center">Pedido</th>
-                    <!-- <th class="text-center">Plato(s) pedidos</th>
-                    <th class="text-center">Cantidad</th>
-                    <th class="text-center">Precio total</th> -->
+                    <th class="text-center">Precio total</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,11 +44,14 @@
                             <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
                             {% endif %}
                         </td>
-  
+
                         <td>
-                        <button onclick="abrir_modal_edicion('{% url 'mantenedor:detalle_orden' orden.id %}')" class="btn btn-primary">Ver pedido
-                        </button>
+                        {% for item in orden.items.all %}
+                            <li>{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
+                        {% endfor %}
                         </td>
+                        <td>${{ orden.get_total_cost }} CLP</td>
+                        <td><button class="btn btn-success">Marcar como listo</button></td>
                         
                         <tr class="spacer"></tr>
                         <tr class="tr-shadow">
@@ -62,8 +64,6 @@
         <h1>No tienes ordenes pendientes</h1>
     {% endif %}
 
-<div class="modal fade" id="creacion" role="dialog"></div>
-<div class="modal fade" id="edicion" role="dialog"></div>
 
 {% endblock listado %}
 

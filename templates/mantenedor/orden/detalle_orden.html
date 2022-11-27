@@ -12,16 +12,19 @@
                     <thead>
                       <tr>
                         <th>Product</th>
+                        <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>
+                        
                         <td>{{ item.receta }}</td>
                         <td>{{ item.cantidad }}</td>
                         <td>${{ item.get_cost }}</td>
+
                     </tbody>
-                    </table>
+                </table>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" type="button" data-dismiss="modal">Cerrar</button>

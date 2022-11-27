@@ -67,6 +67,10 @@ class OrdenCompra(models.Model):
     def __str__(self):
         return 'Orden de Compra {}'.format(self.id)
     
+    def get_total_cost(self):
+        total_cost = sum(item.get_cost() for item in self.items.all())
+        return total_cost
+    
     
 
 class OrdenItem(models.Model):
