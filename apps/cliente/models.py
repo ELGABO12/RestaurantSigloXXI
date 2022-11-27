@@ -70,7 +70,6 @@ class OrdenCompra(models.Model):
     
 
 class OrdenItem(models.Model):
-    id = models.AutoField(primary_key = True)
     orden = models.ForeignKey(OrdenCompra, on_delete=models.SET_NULL,related_name='items', null = True)
     receta = models.ForeignKey(Receta, on_delete=models.SET_NULL, related_name='orden_items', null = True)
     precio_receta = models.FloatField('Precio de la receta', max_length=10)

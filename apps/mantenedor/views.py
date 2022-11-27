@@ -1,12 +1,14 @@
 from ast import Del
 from audioop import reverse
 from typing import List
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View,TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from apps.mantenedor.forms import ProductoForm,ProveedorForm,MesaForm,RecetaForm,BodegaForm
+from apps.cliente.forms import OrderCreateForm
 from .models import Producto, Proveedor, Mesa, Receta, Bodega
+from apps.cliente.models import *
 
 # Create your views here.
 
@@ -228,6 +230,46 @@ class EliminarReceta(DeleteView): # Eliminar Receta
     success_url = reverse_lazy('mantenedor:listado_recetas')
 
 
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+
+
+class ListadoOrden(View): # Listado de Ordenes de compra
+    model = OrdenCompra
+    form_class = OrderCreateForm
+    template_name = 'mantenedor/orden/listar_orden.html'  
+    
+    def get_queryset(self):
+        return self.model.objects.filter()
+    
+    def get_context_data(self,**kwargs):
+        contexto = {}
+        contexto['ordenes'] = self.get_queryset()
+        contexto['form'] = self.form_class()
+        return contexto
+    
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,self.get_context_data())
+    
+
+class DetalleOrden(View):
+    model = OrdenCompra
+    template_name = 'mantenedor/orden/detalle_orden.html'  
+    
+    def get_queryset(self):
+        return self.model.objects.filter()
+    
+    def get_context_data(self,**kwargs):
+        contexto = {}
+        contexto['ordenes'] = self.get_queryset()
+        contexto['form'] = self.form_class()
+        return contexto
+    
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,self.get_context_data())
 
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------

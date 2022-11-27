@@ -66,9 +66,9 @@
             </div>
             {% if user.is_authenticated %}
             <div class="user-area dropdown float-right">
-                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido al área cliente {{ user.username }}</h3>
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Bienvenido al área cliente, {{ user.username }}</h3>
                 <a href="{% url 'index' %}">
-                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Ir a área administrativa</h3>
+                  <h3 class="nav-item mx-0 mx-lg-1" style="font-size: small;">Ir a administración</h3>
                 </a>
             {% endif %}
                 </div>
@@ -405,7 +405,7 @@
           <div>
             <h4>Horario</h4>
             <p>
-              <strong>Lunes-Sabado: 11:00 - 23:59</strong> CHL<br>
+              <strong>Lunes-Sabado: 11:00 - 19:30</strong> CHL<br>
               Domingo: Cerrado
             </p>
           </div>

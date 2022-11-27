@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo1 %}
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Ordenes de compra</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if ordenes %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre del cliente</th>
+                    <th class="text-center">Apellido del cliente</th>
+                    <th class="text-center">Email del cliente</th>
+                    <th class="text-center">Fecha de orden</th>
+                    <th class="text-center">Pagado</th>
+                    <th class="text-center">Pedido</th>
+                    <!-- <th class="text-center">Plato(s) pedidos</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Precio total</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for orden in ordenes %}
+                    <tr>
+                        <td class="text-center">{{ orden.id }}</td>
+                        <td class="text-center">{{ orden.nombre_cliente }}</td>
+                        <td class="text-center">{{ orden.apellido_cliente }}</td>
+                        <td class="text-center">{{ orden.email_cliente }}</td>
+                        <td class="text-center">{{ orden.fecha_orden }}</td>
+                        <td>
+                            {% if orden.ha_pagado is True %}
+                                <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
+                            {% else %}
+                            <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
+                            {% endif %}
+                        </td>
+  
+                        <td>
+                        <button onclick="abrir_modal_edicion('{% url 'mantenedor:detalle_orden' orden.id %}')" class="btn btn-primary">Ver pedido
+                        </button>
+                        </td>
+                        
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No tienes ordenes pendientes</h1>
+    {% endif %}
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

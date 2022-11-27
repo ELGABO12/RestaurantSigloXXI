@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
@@ -15,6 +16,27 @@ def pedir(request):
     return render(request, "cliente/area_cliente/pedir.html", {
         "recetas": recetas
     })
+    
+    
+def crear_orden(request):
+    cart = Cart(request)
+    if request.method == 'POST':
+        form = OrderCreateForm(request.POST)
+        if form.is_valid():
+            orden = form.save(commit=False)
+            orden.save()
+            for item in cart:
+                OrdenItem.objects.create(orden=orden, receta=item['receta'], precio_receta=item['precio_receta'], cantidad=item['cantidad'])
+            cart.clear()
+            return render(request, 'cliente/paypal/paypal.html', {'order': orden})
+    else:
+        form = OrderCreateForm()
+    return render(request, 'cliente/orden_compra/crear_orden.html', {'cart': cart, 'form': form})
+
+
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(OrdenCompra, id=order_id)
+    return render(request, 'admin/orders/order/detail.html', {'order': order})
 
 
 def agregar_producto(request, receta_id):
@@ -55,7 +77,7 @@ class CrearOrden(CreateView): # Crear Reserva
     model = OrdenCompra
     form_class = OrderCreateForm
     template_name = 'cliente/orden_compra/crear_orden.html'
-    success_url = reverse_lazy('cliente:paypal')
+    success_url = reverse_lazy('cliente:pagar')
 
 
 

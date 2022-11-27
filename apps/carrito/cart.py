@@ -1,4 +1,9 @@
-class Cart:
+from django.conf import settings
+from apps.mantenedor.models import Receta
+
+
+class Cart(object):
+    
     def __init__(self, request):
         self.request = request
         self.session = request.session
@@ -7,19 +12,20 @@ class Cart:
             cart = self.session["cart"] = {}
         self.cart = cart
 
-    def add(self, recetas):
-        if str(recetas.id) not in self.cart.keys():
-            self.cart[recetas.id] = {
-                "recetas_id": recetas.id,
-                "nombre_receta": recetas.nombre_receta,
-                "quantity": 1,
-                "precio_receta": str(recetas.precio_receta),
-                "image": recetas.image.url
+    def add(self, receta, cantidad=1):
+        receta_id = str(receta.id)
+        if receta_id not in self.cart:
+            self.cart[receta_id] = {
+                "recetas_id": receta.id,
+                "nombre_receta": receta.nombre_receta,
+                "cantidad": 1,
+                "precio_receta": str(receta.precio_receta),
+                "image": receta.image.url
             }
         else:
             for key, value in self.cart.items():
-                if key == str(recetas.id):
-                    value["quantity"] = value["quantity"] + 1
+                if key == str(receta.id):
+                    value["cantidad"] = value["cantidad"] + 1
                     break
         self.save()
         
@@ -29,12 +35,31 @@ class Cart:
         self.session.modified = True
         
     
-    def remove(self, recetas):
-        recetas_id = str(recetas.id)
-        if recetas_id in self.cart:
-            del self.cart[recetas_id]
+    def remove(self, receta):
+        receta_id = str(receta.id)
+        if receta_id in self.cart:
+            del self.cart[receta_id]
             self.save()
             
+    def __iter__(self):
+        receta_ids = self.cart.keys()
+        recetas = Receta.objects.filter(id__in=receta_ids)
+        for receta in recetas:
+            self.cart[str(receta.id)]['receta'] = receta
+        
+        for item in self.cart.values():
+            item['precio_receta'] = float(item['precio_receta'])
+            item['precio_total'] = item['precio_receta'] * item['cantidad']
+            yield item
+            
+    
+    def __len__(self):
+        return sum(item['cantidad'] for item in self.cart.values())
+    
+    
+    def get_total_price(self):
+        return sum(float(item['precio_receta']) * item['cantidad'] for item in self.cart.values())
+    
     
     def decrement(self, recetas):
         for key, value in self.cart.items():

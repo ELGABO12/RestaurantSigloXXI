@@ -15,8 +15,8 @@ urlpatterns = [
     path('limpiar/', limpiar_carrito, name ='CLS'),
     
     
-    path('crear_orden/', CrearOrden.as_view(), name ='crear_orden'),
-    path('paypal/', pago_paypal, name ='paypal'),
+    path('crear_orden/', crear_orden, name ='crear_orden'),
+    path('pagar/', pago_paypal, name ='pagar'),
     path('gracias/', Gracias.as_view(), name ='gracias'),
     
     

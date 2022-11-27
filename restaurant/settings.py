@@ -114,7 +114,7 @@ AUTH_USER_MODEL = 'usuario.Usuario'
 
 LANGUAGE_CODE = 'es-cl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 

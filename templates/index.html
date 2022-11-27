@@ -101,6 +101,9 @@
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
                     </li>
+                    <li class="menu-item dropdown">
+                        <a href="{% url 'mantenedor:lista_ordenes' %}"> <i class="menu-icon fa fa-list-alt"></i>Ordenes de compra</a>
+                    </li>
                 {% endif %}
 
                 {% if request.user|has_group:"Administrador" or request.user.is_superuser %}
