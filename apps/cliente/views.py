@@ -34,10 +34,6 @@ def crear_orden(request):
     return render(request, 'cliente/orden_compra/crear_orden.html', {'cart': cart, 'form': form})
 
 
-def admin_order_detail(request, order_id):
-    order = get_object_or_404(OrdenCompra, id=order_id)
-    return render(request, 'admin/orders/order/detail.html', {'order': order})
-
 
 def agregar_producto(request, receta_id):
     cart = Cart(request)
@@ -96,6 +92,14 @@ class Gracias(TemplateView):
 # --------------------------------------------------------------------------------------
 
 
+
+
+
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 class InicioCliente(TemplateView):
     template_name = 'cliente/area_cliente/index_cliente.html'

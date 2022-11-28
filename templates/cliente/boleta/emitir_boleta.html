@@ -23,7 +23,7 @@
                     <th class="text-center">Apellido del cliente</th>
                     <th class="text-center">Email del cliente</th>
                     <th class="text-center">Fecha de orden</th>
-                    <th class="text-center">Precio total</th>
+                    <th class="text-center">Total boleta</th>
                     <th class="text-center">Pagado</th>
                 </tr>
             </thead>
@@ -38,9 +38,9 @@
                         <td style="text-transform:none">$ {{ orden.get_total_cost }} CLP</td>
                         <td class="text-center">
                             {% if orden.ha_pagado is True %}
-                                <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
+                                <img src="{% static 'img/icon-yes.gif' %}" width="35%" alt="yes">
                             {% else %}
-                            <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
+                            <img src="{% static 'img/icon-no.gif' %}" width="35%" alt="yes">
                             {% endif %}
                         </td>
 

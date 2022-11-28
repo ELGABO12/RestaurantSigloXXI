@@ -20,6 +20,9 @@ urlpatterns = [
     path('gracias/', Gracias.as_view(), name ='gracias'),
     
     
+
+    
+    
     path('listar_reservas/', login_required(ListadoReserva.as_view()), name = 'listado_reservas'),
     path('crear_reserva/', login_required(CrearReserva.as_view()), name = 'crear_reserva'),
     path('eliminar_reserva/<int:pk>/', login_required(EliminarReserva.as_view()), name = 'eliminar_reserva'),

@@ -8,10 +8,14 @@ from django.contrib.auth import login,logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView,TemplateView
+from apps.cliente.models import OrdenCompra, OrdenItem
 from apps.usuario.models import Usuario
 from django.contrib.auth.models import Group
 from .forms import FormularioLogin, FormularioUsuario
 from apps.usuario.mixins import LoginYSuperStaffMixin, ValidarPermisosRequeridosUsuariosMixin
+from datetime import datetime
+from django.db.models.functions import Coalesce
+from django.db.models import Sum
 
 # Create your views here.
 
@@ -19,6 +23,24 @@ from apps.usuario.mixins import LoginYSuperStaffMixin, ValidarPermisosRequeridos
 
 class Inicio(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
+
+
+
+class Dashboard(TemplateView):
+    template_name = 'mantenedor/finanzas/dashboard.html'
+    
+    def get_graph_sales_year_month(self):
+        data = []
+        total = OrdenItem.objects.filter().aggregate(r=Coalesce(Sum('precio_receta'), 0)).get('r')
+        data.append(total)
+        return data
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['panel'] = 'Panel de administración'
+        context['graph_sales_year_month'] = self.get_graph_sales_year_month()
+        return context
 
 
 

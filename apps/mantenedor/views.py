@@ -305,3 +305,12 @@ class ActualizarBodega(UpdateView): # Actualizar Bodega
 class EliminarBodega(DeleteView): # Eliminar Producto de la Bodega
     model = Bodega
     success_url = reverse_lazy('mantenedor:listado_bodegas')
+
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+
+
