@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
-from apps.mantenedor.models import Receta
+from apps.mantenedor.models import Receta, Mesa
 from apps.cliente.models import Reserva, OrdenItem, OrdenCompra
 from apps.cliente.forms import ReservaForm, OrderCreateForm
 from apps.carrito.cart import Cart
@@ -17,7 +17,18 @@ def pedir(request):
         "recetas": recetas
     })
     
-    
+
+# def eleccion_mesa(request):
+#     if request.method == 'POST':
+#         form = OrderCreateForm(request.POST)
+#         if form.is_valid():
+#             datos = form.save(commit=False)
+#             datos.save()
+#             for mesa in mesas:
+                
+                
+
+
 def crear_orden(request):
     cart = Cart(request)
     if request.method == 'POST':

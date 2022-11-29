@@ -37,6 +37,7 @@ class OrdenCompra(models.Model):
     nombre_cliente = models.CharField('Nombre', max_length = 50, blank = False, null = True)
     apellido_cliente = models.CharField('Apellido', max_length = 50, blank = False, null = True)
     email_cliente = models.EmailField(max_length = 255, blank = False, null = True)
+    mesa = models.ForeignKey(Mesa, on_delete=models.SET_NULL, null=True)
     fecha_orden = models.DateTimeField(auto_now_add=True)
     ha_pagado = models.BooleanField(default=True)
     

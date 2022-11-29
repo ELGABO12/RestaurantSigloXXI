@@ -63,11 +63,12 @@ class ReservaForm(forms.ModelForm):
 class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = OrdenCompra
-        fields = ['nombre_cliente', 'apellido_cliente', 'email_cliente',]
+        fields = ['nombre_cliente', 'apellido_cliente', 'email_cliente', 'mesa']
         labels = {
             'nombre_cliente': 'Nombre del cliente',
             'apellido_cliente': 'Apellido del cliente',
             'email_cliente': 'Email del cliente',
+            'mesa': 'Elija la mesa en la que está sentado'
         }
         widgets = {
             'nombre_cliente': forms.TextInput(
@@ -86,6 +87,11 @@ class OrderCreateForm(forms.ModelForm):
                 attrs = {
                     'class': 'form-control',
                     'placeholder': ' Ingrese su email'
+                }
+            ),
+            'mesa': forms.Select(
+                attrs = {
+                    'class': 'form-control'
                 }
             ),
         }
