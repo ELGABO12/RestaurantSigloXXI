@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, ListView, UpdateView, CreateView, DeleteView
 from apps.mantenedor.models import Receta
-from apps.cliente.models import Reserva, Boleta, OrdenItem, OrdenCompra
-from apps.cliente.forms import ReservaForm, BoletaForm, OrderCreateForm
+from apps.cliente.models import Reserva, OrdenItem, OrdenCompra
+from apps.cliente.forms import ReservaForm, OrderCreateForm
 from apps.carrito.cart import Cart
 
 # Create your views here.
@@ -173,14 +173,6 @@ class ListadoBoleta(View): # Listado de Boletas
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name,self.get_context_data())
         
-        
-
-class CrearBoleta(CreateView): # Crear Reserva
-    model = Boleta
-    form_class = BoletaForm
-    template_name = 'cliente/boleta/crear_boleta.html'
-    success_url = reverse_lazy('cliente:listado_boletas')
-
 
 
 # -------------------------------------------------------
