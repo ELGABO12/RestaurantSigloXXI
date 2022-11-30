@@ -9,26 +9,11 @@ from apps.mantenedor.forms import ProductoForm,ProveedorForm,MesaForm,RecetaForm
 from apps.cliente.forms import OrderCreateForm
 from .models import Producto, Proveedor, Mesa, Receta, Bodega
 from apps.cliente.models import *
-
-# Create your views here.
-
-# def home(request):
-#     return render(request, 'index.html')
-
-"""
-    1.- dispatch(): Valida la petición y elige qué método HTTP se utilizó para la solicitud.
-    2.- http_method_not_allowed(): Retorna un error cuando se utiliza un método HTTP no soportado o definido.
-    3.- options()
-"""
-    
-    
     
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
 
-    
-    
 class ListadoProducto(View): # Listado de Productos
     model = Producto
     form_class = ProductoForm

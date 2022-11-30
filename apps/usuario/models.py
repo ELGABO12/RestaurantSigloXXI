@@ -2,6 +2,10 @@ from lib2to3.pytree import Base
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,PermissionsMixin
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
 class UsuarioManager(BaseUserManager):
     def _create_user(self, username, email, nombres, apellidos, password, is_staff, is_superuser, **extra_fields):
         user = self.model(
@@ -23,6 +27,11 @@ class UsuarioManager(BaseUserManager):
     
     def create_superuser(self, username, email, nombres, apellidos, password = None, **extra_fields):
         return self._create_user(username,email,nombres,apellidos,password,True,True,**extra_fields)
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class Usuario(AbstractBaseUser, PermissionsMixin):

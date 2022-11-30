@@ -41,8 +41,11 @@ class ProductoForm(forms.ModelForm):
                 }
             ), 
         }
-        
+ 
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class ProveedorForm(forms.ModelForm):
@@ -87,7 +90,9 @@ class ProveedorForm(forms.ModelForm):
         }
 
 
-
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class MesaForm(forms.ModelForm):
@@ -121,7 +126,9 @@ class MesaForm(forms.ModelForm):
         }
 
 
-
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class RecetaForm(forms.ModelForm):
@@ -138,13 +145,13 @@ class RecetaForm(forms.ModelForm):
             'nombre_receta': forms.TextInput(
                 attrs = {
                     'class': 'form-control',
-                    'placeholder': ' Ingrese el nombre de la receta'
+                    'placeholder': ' Ingrese el nombre de la receta o bebestible'
                 }
             ),
             'precio_receta': forms.TextInput(
                 attrs = {
                     'class': 'form-control',
-                    'placeholder': ' Ingrese el precio que va a costar'
+                    'placeholder': ' Ingrese el precio de la receta o bebestible'
                 }
             ),
             'tiempo_preparacion': forms.TextInput(
@@ -155,6 +162,10 @@ class RecetaForm(forms.ModelForm):
             ),
         }
 
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class BodegaForm(forms.ModelForm):

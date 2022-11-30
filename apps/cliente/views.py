@@ -16,35 +16,10 @@ def pedir(request):
     return render(request, "cliente/area_cliente/pedir.html", {
         "recetas": recetas
     })
-    
 
-# def eleccion_mesa(request):
-#     if request.method == 'POST':
-#         form = OrderCreateForm(request.POST)
-#         if form.is_valid():
-#             datos = form.save(commit=False)
-#             datos.save()
-#             for mesa in mesas:
-                
-                
-
-
-def crear_orden(request):
-    cart = Cart(request)
-    if request.method == 'POST':
-        form = OrderCreateForm(request.POST)
-        if form.is_valid():
-            orden = form.save(commit=False)
-            orden.save()
-            for item in cart:
-                OrdenItem.objects.create(orden=orden, receta=item['receta'], precio_receta=item['precio_receta'], cantidad=item['cantidad'])
-            cart.clear()
-            return render(request, 'cliente/paypal/paypal.html', {'order': orden})
-    else:
-        form = OrderCreateForm()
-    return render(request, 'cliente/orden_compra/crear_orden.html', {'cart': cart, 'form': form})
-
-
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 def agregar_producto(request, receta_id):
     cart = Cart(request)
@@ -72,6 +47,25 @@ def limpiar_carrito(request):
     cart.clear()
     return redirect("cliente:pedir")
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+def crear_orden(request):
+    cart = Cart(request)
+    if request.method == 'POST':
+        form = OrderCreateForm(request.POST)
+        if form.is_valid():
+            orden = form.save(commit=False)
+            orden.save()
+            for item in cart:
+                OrdenItem.objects.create(orden=orden, receta=item['receta'], precio_receta=item['precio_receta'], cantidad=item['cantidad'])
+            cart.clear()
+            return render(request, 'cliente/paypal/paypal.html', {'order': orden})
+    else:
+        form = OrderCreateForm()
+    return render(request, 'cliente/orden_compra/crear_orden.html', {'cart': cart, 'form': form})
+
 
 
 # --------------------------------------------------------------------------------------
@@ -87,10 +81,8 @@ class CrearOrden(CreateView): # Crear Reserva
     success_url = reverse_lazy('cliente:pagar')
 
 
-
 def pago_paypal(request):
     return render(request, template_name= 'cliente/paypal/paypal.html')
-
 
 
 class Gracias(TemplateView):
@@ -104,14 +96,6 @@ class Gracias(TemplateView):
 
 
 
-
-
-
-
-# --------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------
-
 class InicioCliente(TemplateView):
     template_name = 'cliente/area_cliente/index_cliente.html'
     
@@ -123,9 +107,9 @@ class Menu(TemplateView):
 
 
 
-# -------------------------------------------------------
-# -------------------------------------------------------
-# -------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 
@@ -145,8 +129,7 @@ class ListadoReserva(View): # Listado de Reservas
     
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name,self.get_context_data())
-        
-        
+
 
 class CrearReserva(CreateView): # Crear Reserva
     model = Reserva
@@ -161,9 +144,9 @@ class EliminarReserva(DeleteView): #Eliminar Reserva
 
 
 
-# -------------------------------------------------------
-# -------------------------------------------------------
-# -------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 
@@ -183,9 +166,3 @@ class ListadoBoleta(View): # Listado de Boletas
     
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name,self.get_context_data())
-        
-
-
-# -------------------------------------------------------
-# -------------------------------------------------------
-# -------------------------------------------------------

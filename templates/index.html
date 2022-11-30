@@ -103,7 +103,7 @@
 
                 {% if request.user|has_group:"Administrador" or request.user|has_group:"Chef" or request.user.is_superuser %}
                     <li class="menu-item dropdown">
-                        <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas</a>
+                        <a href="{% url 'mantenedor:listado_recetas' %}"> <i class="menu-icon fa fa-book"></i>Recetas y Bebestibles</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="{% url 'mantenedor:lista_ordenes' %}"> <i class="menu-icon fa fa-list-alt"></i>Ordenes de compra</a>
@@ -130,7 +130,7 @@
                 {% if request.user|has_group:"Administrador" or request.user|has_group:"Finanzas" or request.user.is_superuser %}
                     <li class="menu-title">Finanzas</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">
-                        <a href="{% url 'cliente:listado_boletas' %}" > <i class="menu-icon fa fa-dollar"></i>Emitir boleta</a>
+                        <a href="{% url 'cliente:listado_boletas' %}" > <i class="menu-icon fa fa-dollar"></i>Boletas emitidas</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="{% url 'usuarios:dashboard' %}" > <i class="menu-icon fa fa-bar-chart-o"></i>Estadísticas</a>

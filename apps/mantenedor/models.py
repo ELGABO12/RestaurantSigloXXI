@@ -1,7 +1,8 @@
 from django.db import models
 
-
-# Create your models here.
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 class Producto(models.Model): #Esto es PRODUCTOS
     id = models.AutoField(primary_key = True)
@@ -17,10 +18,13 @@ class Producto(models.Model): #Esto es PRODUCTOS
         
     def __str__(self):
         return self.nombre_producto
-    
-    
-    
-    
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+
 class Proveedor(models.Model): #Esto es PROVEEDOR
     id = models.AutoField(primary_key = True)
     nombre_proveedor = models.CharField('Nombre proveedor', max_length = 255, blank = False, null = True)
@@ -34,8 +38,11 @@ class Proveedor(models.Model): #Esto es PROVEEDOR
         
     def __str__(self):
         return self.nombre_proveedor
-    
-    
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class Mesa(models.Model):
@@ -53,13 +60,16 @@ class Mesa(models.Model):
         return f'Mesa N°{self.numero_mesa}, {self.descripcion_mesa} para {self.cantidad_personas} personas'
 
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class Receta(models.Model):
     id = models.AutoField(primary_key = True)
-    nombre_receta = models.CharField('Nombre de la receta', max_length = 255, db_index=True)
-    precio_receta = models.FloatField('Precio de la receta', max_length=10)
-    image = models.ImageField(upload_to = "recetas", blank=True, null=False)
+    nombre_receta = models.CharField('Nombre de la receta o bebestible', max_length = 255, db_index=True)
+    precio_receta = models.FloatField('Precio de la receta o bebestible', max_length=10)
+    image = models.ImageField(upload_to = "recetas y bebestibles", blank=True, null=False)
     tiempo_preparacion = models.CharField('Tiempo de preparación', max_length=2, blank = False, null = True)
     
     class Meta:
@@ -70,6 +80,10 @@ class Receta(models.Model):
     def __str__(self):
         return self.nombre_receta
 
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 
 class Bodega(models.Model):

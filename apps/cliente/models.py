@@ -2,9 +2,9 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from apps.mantenedor.models import Mesa, Receta
 
-
-# Create your models here.
-
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 class Reserva(models.Model):
     cod_reserva = models.AutoField(primary_key = True)
@@ -31,6 +31,10 @@ class Reserva(models.Model):
         return f'{self.nombre_cliente} {self.apellido_cliente}'
 
 
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
 
 class OrdenCompra(models.Model):
     id = models.AutoField(primary_key = True)
@@ -52,8 +56,12 @@ class OrdenCompra(models.Model):
     def get_total_cost(self):
         total_cost = sum(item.get_cost() for item in self.items.all())
         return total_cost
-    
-    
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
 
 class OrdenItem(models.Model):
     orden = models.ForeignKey(OrdenCompra, on_delete=models.SET_NULL,related_name='items', null = True)

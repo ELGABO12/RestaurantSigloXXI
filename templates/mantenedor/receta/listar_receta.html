@@ -3,12 +3,12 @@
 
 {% block titulo1 %}
 <div>
-    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'mantenedor:crear_receta' %}')">Crear Receta</button>
+    <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('{% url 'mantenedor:crear_receta' %}')">Crear Receta o Bebestible</button>
 </div>
     <div class="card-header">
         <div class="row">
             <div class="col-md-8">
-                <strong class="card-title">Listado de Recetas</strong>
+                <strong class="card-title">Listado de Recetas y/o Bebestibles</strong>
             </div>
         </div>
     </div>
@@ -22,8 +22,8 @@
             <thead>
                 <tr>
                     <th class="text-center">ID</th>
-                    <th class="text-center">Nombre de la receta</th>
-                    <th class="text-center">Precio de la receta</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Precio</th>
                     <th class="text-center">Imagen</th>
                     <th class="text-center">Tiempo de preparación aprox.</th>
                     <th class="text-center">Opciones</th>

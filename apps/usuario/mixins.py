@@ -8,7 +8,12 @@ class LoginYSuperStaffMixin(object):
             if request.user.is_authenticated:
                 return super().dispatch(request, *args, **kwargs)
         return redirect('index')
-            
+
+
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
 
 class ValidarPermisosRequeridosUsuariosMixin(object):
     permission_required = ('usuario.view_usuario', 'usuario.add_usuario', 
