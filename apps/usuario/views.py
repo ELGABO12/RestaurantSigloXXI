@@ -33,8 +33,13 @@ class Dashboard(TemplateView):
     
     def get_graph_sales_year_month(self):
         data = []
-        total = OrdenItem.objects.filter().aggregate(r=Coalesce(Sum('precio_receta'), 0)).get('r')
-        data.append(total)
+        try:
+            year = datetime.now().year
+            for m in range(1, 13):
+                total = OrdenItem.objects.filter(fecha_orden_item__year=year, fecha_orden_item__month=m).aggregate(r=Coalesce(Sum('precio_receta'), 0)).get('r')
+                data.append(total)
+        except:
+            pass
         return data
     
     
