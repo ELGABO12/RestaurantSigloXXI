@@ -83,21 +83,21 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 DATABASES = {
     # Base de datos SQLite
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'DBrestaurant'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'DBrestaurant'),
+    # }
     
     # Base de datos Oracle
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.oracle',
-    #     'DBNAME': 'DBrestaurant',
-    #     'NAME': 'xe',
-    #     'USER': 'system',
-    #     'PASSWORD': '123456',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '1521',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'DBNAME': 'DBrestaurant',
+        'NAME': 'xe',
+        'USER': 'system',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '1521',
+    }
 }
 
 

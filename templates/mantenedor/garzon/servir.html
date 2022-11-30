@@ -49,7 +49,7 @@
 
                         <td>
                         {% for item in orden.items.all %}
-                            <li style="text-transform:none">{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
+                            <li style="text-transform:none">x{{ item.cantidad }} {{ item.receta }}</li>
                         {% endfor %}
                     
                         </td>

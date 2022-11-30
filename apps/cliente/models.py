@@ -70,6 +70,7 @@ class OrdenItem(models.Model):
     receta = models.ForeignKey(Receta, on_delete=models.SET_NULL, related_name='orden_items', null = True)
     precio_receta = models.FloatField('Precio de la receta', max_length=10)
     cantidad = models.PositiveIntegerField('Cantidad', default=1, null = False)
+    fecha_orden_item = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '{}'.format(self.id)
