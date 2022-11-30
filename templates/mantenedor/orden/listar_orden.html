@@ -18,6 +18,7 @@
         <table id="tabla_libros" class="table">
             <thead>
                 <tr>
+                    <th class="text-center">ID</th>
                     <th class="text-center">Nombre del cliente</th>
                     <th class="text-center">Apellido del cliente</th>
                     <th class="text-center">Mesa</th>
@@ -25,21 +26,24 @@
                     <th class="text-center">Pagado</th>
                     <th class="text-center">Pedido</th>
                     <th class="text-center">Precio total</th>
+                    <th class="text-center">Estado del pedido</th>
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for orden in ordenes %}
+                    {% if orden.estado is False %}  
                     <tr>
+                        <td class="text-center" style="text-transform:none">{{ orden.id }}</td>
                         <td class="text-center" style="text-transform:none">{{ orden.nombre_cliente }}</td>
                         <td class="text-center" style="text-transform:none">{{ orden.apellido_cliente }}</td>
                         <td class="text-center" style="text-transform:none">{{ orden.mesa }}</td>
                         <td class="text-center" style="text-transform:none">{{ orden.fecha_orden }}</td>
                         <td class="text-center">
                             {% if orden.ha_pagado is True %}
-                                <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
+                                <img src="{% static 'img/icon-yes.gif' %}" width="35%" alt="yes">
                             {% else %}
-                            <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
+                            <img src="{% static 'img/icon-no.gif' %}" width="35%" alt="yes">
                             {% endif %}
                         </td>
 
@@ -47,13 +51,21 @@
                         {% for item in orden.items.all %}
                             <li style="text-transform:none">{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
                         {% endfor %}
+                    
                         </td>
                         <td style="text-transform:none">$ {{ orden.get_total_cost }} CLP</td>
-                        <td><button class="btn btn-success">Envar pedido</button></td>
+                        {% if orden.estado is False %}
+                        <td><button class="btn btn-warning">En preparación...</button></td>
+                        {% endif %}
+                        <td>
+                            <button onclick="abrir_modal_edicion('{% url 'mantenedor:orden_lista' orden.id %}')" class="btn btn-success">Marcar pedido listo
+                            </button>
+                        </td>
                         
                         <tr class="spacer"></tr>
                         <tr class="tr-shadow">
                     </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
@@ -63,6 +75,8 @@
     {% endif %}
 
 
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
 {% endblock listado %}
 
 {% block extrajs %}

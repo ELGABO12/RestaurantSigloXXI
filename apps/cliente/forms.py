@@ -97,3 +97,36 @@ class OrderCreateForm(forms.ModelForm):
                 }
             ),
         }
+
+
+
+class OrdenLista(forms.ModelForm):
+    class Meta:
+        model = OrdenCompra
+        fields = ['estado']
+        labels = {
+            'estado': 'Marque "Sí" cuando tenga el pedido listo',
+        }
+        widgets = {
+            'estado': forms.NullBooleanSelect(
+                attrs = {
+                    'class': 'form-control',
+                }
+            ),
+        }
+    
+
+class PedidoServido(forms.ModelForm):
+    class Meta:
+        model = OrdenCompra
+        fields = ['entregado']
+        labels = {
+            'entregado': 'Marque "Sí" cuando haya servido el pedido al cliente',
+        }
+        widgets = {
+            'entregado': forms.NullBooleanSelect(
+                attrs = {
+                    'class': 'form-control',
+                }
+            ),
+        }

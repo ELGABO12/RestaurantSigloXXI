@@ -44,6 +44,8 @@ class OrdenCompra(models.Model):
     mesa = models.ForeignKey(Mesa, on_delete=models.SET_NULL, null=True)
     fecha_orden = models.DateTimeField(auto_now_add=True)
     ha_pagado = models.BooleanField(default=True)
+    estado = models.BooleanField(default=False)
+    entregado = models.BooleanField(default=False)
     
     class Meta:
         verbose_name = 'OrdenCompra'

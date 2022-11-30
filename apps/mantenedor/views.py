@@ -3,10 +3,11 @@ from audioop import reverse
 from typing import List
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
 from django.views.generic import View,TemplateView, ListView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from apps.mantenedor.forms import ProductoForm,ProveedorForm,MesaForm,RecetaForm,BodegaForm
-from apps.cliente.forms import OrderCreateForm
+from apps.cliente.forms import OrderCreateForm, OrdenLista, PedidoServido
 from .models import Producto, Proveedor, Mesa, Receta, Bodega
 from apps.cliente.models import *
     
@@ -240,6 +241,48 @@ class ListadoOrden(View): # Listado de Ordenes de compra
         return render(request,self.template_name,self.get_context_data())
 
 
+class OrdenL(UpdateView): # Marcar Orden lista
+    model = OrdenCompra
+    form_class = OrdenLista
+    template_name = 'mantenedor/orden/orden.html'
+    success_url = reverse_lazy('mantenedor:lista_ordenes')
+    
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orden'] = OrdenCompra.objects.filter()
+        return context
+    
+
+
+class Servir(View): # Listado de Ordenes de compra para garzón
+    model = OrdenCompra
+    form_class = OrderCreateForm
+    template_name = 'mantenedor/garzon/servir.html'  
+    
+    def get_queryset(self):
+        return self.model.objects.filter()
+    
+    def get_context_data(self,**kwargs):
+        contexto = {}
+        contexto['ordenes'] = self.get_queryset()
+        contexto['form'] = self.form_class()
+        return contexto
+    
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,self.get_context_data())
+
+
+
+class Servido(UpdateView): # Marcar Orden lista
+    model = OrdenCompra
+    form_class = PedidoServido
+    template_name = 'mantenedor/garzon/servido.html'
+    success_url = reverse_lazy('mantenedor:servir')
+    
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orden'] = OrdenCompra.objects.filter()
+        return context
 
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------

@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo1 %}
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <strong class="card-title">Listado de Pedidos</strong>
+            </div>
+        </div>
+    </div>
+{% endblock titulo1 %}
+
+
+{% block listado %}
+    {% if ordenes %}
+    <div class="table-stats order-table ov-h">
+        <table id="tabla_libros" class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre del cliente</th>
+                    <th class="text-center">Apellido del cliente</th>
+                    <th class="text-center">Mesa</th>
+                    <th class="text-center">Fecha de orden</th>
+                    <th class="text-center">Pagado</th>
+                    <th class="text-center">Pedido</th>
+                    <th class="text-center">Precio total</th>
+                    <th class="text-center">Estado del pedido</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for orden in ordenes %}
+                    {% if orden.estado is True %}  
+                    <tr>
+                        <td class="text-center" style="text-transform:none">{{ orden.id }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.nombre_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.apellido_cliente }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.mesa }}</td>
+                        <td class="text-center" style="text-transform:none">{{ orden.fecha_orden }}</td>
+                        <td class="text-center">
+                            {% if orden.ha_pagado is True %}
+                                <img src="{% static 'img/icon-yes.gif' %}" width="25%" alt="yes">
+                            {% else %}
+                            <img src="{% static 'img/icon-no.gif' %}" width="25%" alt="yes">
+                            {% endif %}
+                        </td>
+
+                        <td>
+                        {% for item in orden.items.all %}
+                            <li style="text-transform:none">{{ item.cantidad }} plato(s) de {{ item.receta }}</li>
+                        {% endfor %}
+                    
+                        </td>
+                        <td style="text-transform:none">$ {{ orden.get_total_cost }} CLP</td>
+                        {% if orden.estado is True %}
+                            <td class="text-center"><button class="btn btn-success">Listo para servir</button></td>
+                        {% endif %}
+                        {% if orden.entregado is False %}
+                            <td class="text-center">
+                                <button onclick="abrir_modal_edicion('{% url 'mantenedor:servido' orden.id %}')" class="btn btn-warning">Entrega pendiente
+                                </button>
+                            </td>
+                        {% else %}
+                            <td class="text-center"><button class="btn btn-success">Servido</button></td>
+                        {% endif %}
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <h1>No tienes pedido pendientes por entregar</h1>
+    {% endif %}
+
+
+<div class="modal fade" id="creacion" role="dialog"></div>
+<div class="modal fade" id="edicion" role="dialog"></div>
+{% endblock listado %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abrir_modal_edicion(url){
+        $('#edicion').load(url, function (){
+            $(this).modal('show');
+        });
+    }
+    function abrir_modal_creacion(url){
+        $('#creacion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{% endblock extrajs %}

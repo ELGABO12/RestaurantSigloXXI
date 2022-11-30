@@ -116,6 +116,13 @@
                     </li>
                 {% endif %}
 
+                {% if request.user|has_group:"Administrador" or request.user|has_group:"Garzon" or request.user.is_superuser %}
+                <li class="menu-title">Garzones</li><!-- /.menu-title -->
+                <li class="menu-item dropdown">
+                    <a href="{% url 'mantenedor:servir' %}"> <i class="menu-icon fa fa-list-alt"></i>Entregas</a>
+                </li>
+                {% endif %}
+
                 {% if request.user|has_group:"Administrador" or request.user|has_group:"Bodega" or request.user.is_superuser %}
                     <li class="menu-title">Bodega</li><!-- /.menu-title -->
                     <li class="menu-item dropdown">

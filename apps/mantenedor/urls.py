@@ -24,6 +24,10 @@ urlpatterns = [
     path('eliminar_receta/<int:pk>/', login_required(EliminarReceta.as_view()), name = 'eliminar_receta'),
     
     path('listar_orden/', login_required(ListadoOrden.as_view()), name = 'lista_ordenes'),
+    path('orden_lista/<int:pk>/', login_required(OrdenL.as_view()), name = 'orden_lista'),
+    
+    path('servir/', login_required(Servir.as_view()), name = 'servir'),
+    path('servido/<int:pk>/', login_required(Servido.as_view()), name = 'servido'),
 
     path('listar_bodegas/', login_required(ListadoBodega.as_view()), name = 'listado_bodegas'),
     path('crear_bodega/', login_required(CrearBodega.as_view()), name = 'crear_bodega'),
